@@ -1,4 +1,4 @@
-import React from 'react';
+/*import React from 'react';
 import image from './images/novesh.jpg.png'
 const card = () => {
   return (
@@ -76,4 +76,4 @@ image: {
 };
   
 
-export default card;
+export default card;*/
