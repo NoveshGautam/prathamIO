@@ -1,68 +1,55 @@
-import React, { useState } from "react";
+import React,{useState} from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import "primereact/resources/themes/lara-light-indigo/theme.css";
-import "primereact/resources/primereact.min.css";
-import { Divider } from "primereact/divider";
-import { InputText } from "primereact/inputtext";
-import { Button } from "primereact/button";
+import image from "./images/Frame.jpg.png";
 import MyForm from './Form';
 
 const LoginForm = () => {
+  const initialValues = {
+    username: "",
+    password: "",
+  };
+
+  const onSubmit = (values) => {
+   
+    console.log(values);
+  };
+
+  const validate = (values) => {
+    const errors = {};
+
+    if (!values.username) {
+      errors.username = "username Required";
+    }
+
+    if (!values.password) {
+      errors.password = "password Required";
+    }
+
+    return errors;
+  };
+
   return (
-    <Formik
-      initialValues={{ username: "", password: "" }}
-      onSubmit={(values) => {
-        console.log("Submitting login form", values);
-      }}
-      validate={(values) => {
-        const errors = {};
-        if (!values.username) {
-          errors.username = "Username is required";
-        }
-        if (!values.password) {
-          errors.password = "Password is required";
-        }
-        return errors;
-      }}
-    >
-      {() => (
-        <Form className="login-form">
-          <div className="inputText" style={styles.inputText}>
-            <label htmlFor="username" className="username">
-              Username
-            </label>
-            <div>
-              <Field
-                id="username"
-                name="username"
-                as={InputText}
-                type="text"
-              />
-              <ErrorMessage name="username" component="div" className="error" />
-            </div>
-          </div>
-          <div className="inputText" style={styles.inputText}>
-            <label htmlFor="password" className="password">
-              Password
-            </label>
-            <div>
-              <Field
-                id="password"
-                name="password"
-                as={InputText}
-                type="password"
-              />
-              <ErrorMessage name="password" component="div" className="error" />
-            </div>
-          </div>
-          <Button type="submit" label="Login" className="button" />
-        </Form>
-      )}
+    <Formik initialValues={initialValues} onSubmit={onSubmit} validate={validate}>
+      <Form>
+        <div>
+          <label htmlFor="username" style={styles.label}>Username</label>
+          <Field type="username" id="username" name="username" style={styles.inputField} />
+          <ErrorMessage name="username" component="div"  style={styles.errorText}/>
+        </div>
+        <div>
+          <label htmlFor="password" style={styles.label}>Password</label>
+          <Field type="password" id="password" name="password" style={styles.inputField}/>
+          <ErrorMessage name="password" component="div"  style={styles.errorText}/>
+        </div>
+        <button type="submit" style={styles.loginButton}>Log In</button>
+        <hr className="divider" />
+       
+      </Form>
     </Formik>
   );
 };
 
-const LoginPage = () => {
+const App = () => {
   const [Signup, setSignup] = useState(false);
 
   const SignupClick = () => {
@@ -78,45 +65,106 @@ const LoginPage = () => {
   }
 
   return (
-    <div className="loginPage" style={styles.login}>
-      <div className="container" style={styles.container}>
-        <div className="main">
+    <div style={styles.containerStyle}>
+      <div style={styles.subcontainer1Style}>
+        <div style={styles.miniContainer}>
+       
+         
           <LoginForm />
-        </div>
 
-        <Divider layout="horizontal" className="line" align="center">
-          <b>OR</b>
-        </Divider>
-
-        <div className="buttos">
-          <Button
-            label="Sign Up"
-            className="signup-button p-button-success"
-            onClick={SignupClick}
-          ></Button>
+          <button type="button" style={styles.signUpButton} onClick={SignupClick}>signup</button>
         </div>
+      </div>
+      <div style={styles.subcontainer2Style}>
+        <img src={image} style={styles.image} alt="Image" />
       </div>
     </div>
   );
 };
 
-
 const styles = {
-  login: {
+  containerStyle: {
+    display: "flex",
+    flexDirection: "row",
+    width: "100%",
+    height: "100vh",
+    background: "black",
+  },
+
+  subcontainer1Style: {
+    flex: 0.5,
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    height: "100vh",
+   
+    background: "white",
   },
-  container: {
-    maxWidth: "800px",
-    height: "auto",
-    minHeight: "100px",
-    padding: "20px",
+
+  subcontainer2Style: {
+    flex: 0.5,
+    display: "flex",
+
+   
   },
-  inputText: {
-    marginBottom: "15px",
+  image: {
+    width: "832px",
+  },
+  
+  miniContainer: {
+    height: "550px",
+    width: "500px",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    textAlign: "center",
+   // background: "lightblue",
+    borderRadius: "10px",
+  },
+  loginButton: {
+    backgroundColor: "blue",
+    color: "white",
+    padding: "10px 20px",
+    borderRadius: "5px",
+    margin: "20px 0",
+    border: "none",
+    cursor: "pointer",
+    width: '100px',
+    height: '40px'
+  },
+
+  signUpButton: {
+    backgroundColor: "green",
+    color: "white",
+    padding: "10px 20px",
+    borderRadius: "5px",
+    margin: "10px 0",
+    border: "none",
+    cursor: "pointer",
+    width: '100px',
+    height: '40px'
+  },
+  inputField: {
+    width: "90%",
+    padding: "10px",
+    fontSize: "16px",
+    borderRadius: "5px",
+    border: "1px solid #ccc",
+    margin: "2px 5",
+  },
+
+  label: {
+    display: "block",
+    marginBottom: "0px",
+    fontSize: "20px",
+    fontWeight: '100',
+    marginTop: '15px'
+  },
+  errorText: {
+    color: "red",
+    fontSize: "14px",
+    marginTop: "5px",
   },
 };
 
-export default LoginPage;
+export default App;
