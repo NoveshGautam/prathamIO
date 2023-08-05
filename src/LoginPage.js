@@ -77,23 +77,24 @@ const LoginForm = () => {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
+            flexDirection: "column",
           }}
         >
+          <img
+            src={frame2image}
+            style={{ width: "428px", height: "40px" }}
+            alt="Image"
+          />
+
           <div
-            style={{ width: "350px", height: "300px", position: "relative" }}
+            style={{ width: "428px", height: "444px", position: "relative" }}
           >
-            <img
-              src={frame2image}
-              style={{ width: "350px", height: "40px", background: "white" }}
-              alt="Image"
-            />
             <div
               style={{
-                width: "375px",
-                height: "50px",
-                background: "white",
+                width: "428px",
+                height: "42px",
                 position: "absolute",
-                top: "30%",
+                top: "20%",
                 left: "50%",
                 transform: "translate(-50%, -50%)",
                 display: "flex",
@@ -103,10 +104,11 @@ const LoginForm = () => {
             >
               <h2
                 style={{
-                  fontFamily: "Rubik",
-                  fontWeight: "350",
-                  fontSize: "24px",
+                  //fontFamily: "Rubik",
+                  fontWeight: "700",
+                  fontSize: "34px",
                   color: " #093A5E",
+                  lineHeight: "42px",
                 }}
               >
                 Hi, Welcome Back
@@ -114,10 +116,10 @@ const LoginForm = () => {
             </div>
             <div
               style={{
-                width: "350px",
-                height: "40px",
+                width: "428px",
+                height: "44px",
                 position: "absolute",
-                top: "50%",
+                top: "45%",
                 left: "50%",
                 transform: "translate(-50%, -50%)",
                 display: "flex",
@@ -129,11 +131,13 @@ const LoginForm = () => {
                 style={{
                   background: "#004679",
                   color: "white",
-                  width: "350px",
-                  height: "40px",
+                  width: "428px",
+                  height: "44px",
+                  borderRadius: "4px",
                   border: "none",
                   cursor: "pointer",
-                  fontSize: "18px",
+                  fontSize: "14px",
+                  weight: "500",
                 }}
                 onClick={handleSignInClick}
               >
@@ -143,37 +147,42 @@ const LoginForm = () => {
             <div
               style={{
                 position: "absolute",
-                width: "350px",
+                width: "428px",
                 height: "70px",
                 bottom: "0px",
                 left: "50%",
+                top: "70%",
                 transform: "translateX(-50%)",
-                color: "black",
-                background: "white",
               }}
             >
               <div
                 style={{
-                  width: "350px",
+                  width: "428px",
                   height: "35px",
                   textAlign: "center",
-                  color: "gray",
+                  color: "grey/500",
+                  fontsize: "14px",
+                  font: "Roboto",
+                  weight: "500",
                 }}
               >
-                don't have an account?
+                Don't have an account?
               </div>
               <div
                 style={{
                   textDecoration: "underline",
                   cursor: "pointer",
-                  width: "350px",
+                  width: "428px",
                   height: "35px",
                   textAlign: "center",
-                  color: "blue",
+                  color: "#09548C",
+                  font: "roboto",
+                  fontSize: "16px",
+                  fontweight: "500",
                 }}
                 onClick={handleSignUpClick}
               >
-                signup
+                Sign Up
               </div>
             </div>
           </div>
@@ -217,8 +226,8 @@ const LoginForm = () => {
           <div
             style={{
               position: "relative",
-              width: "550px",
-              height: "650px",
+              width: "508px",
+              height: "680px",
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
@@ -226,19 +235,19 @@ const LoginForm = () => {
           >
             <div
               style={{
-                width: "310px",
-                height: "550px",
+                width: "428px",
+                height: "600px",
                 position: "relative",
               }}
             >
               <h2
                 style={{
                   marginTop: "0px",
-                  fontFamily: "Rubik",
-                  fontWeight: "310",
+                  font: "Rubik",
+                  fontWeight: "700",
                   fontSize: "24px",
                   color: "#093A5E",
-                  width: "310px",
+                  width: "428px",
                   height: "30px",
                   textAlign: "center",
                 }}
@@ -247,10 +256,12 @@ const LoginForm = () => {
               </h2>
               <p
                 style={{
-                  width: "310px",
+                  width: "428px",
                   height: "30px",
                   textAlign: "center",
-                  color: "gray",
+                  color: "#9E9E9E",
+                  fontSize: "16px",
+                  fontweight: "400",
                 }}
               >
                 Enter your credentials to continue
@@ -258,8 +269,8 @@ const LoginForm = () => {
 
               <div
                 style={{
-                  width: "310px",
-                  height: "220px",
+                  width: "428px",
+                  height: "290px",
                   position: "absolute",
                   top: "50%",
                   left: "50%",
@@ -272,13 +283,14 @@ const LoginForm = () => {
                 <input
                   type="email"
                   style={{
-                    width: "300px",
-                    height: "40px",
-                    padding: "5px",
-                    marginBottom: "10px",
+                    width: "400px",
+                    height: "30px",
+                    padding: "16px",
+                    marginBottom: "1px",
                     fontSize: "16px",
-                    borderRadius: "5px",
-                    border: "1px solid #ccc",
+                    fontweight: "400",
+                    borderRadius: "12px",
+                    border: "0.5px solid #ccc",
                     background: "rgba(250,250,250,255)",
                   }}
                   placeholder="Email Address"
@@ -287,12 +299,13 @@ const LoginForm = () => {
                 <input
                   type="password"
                   style={{
-                    width: "300px",
-                    height: "40px",
-                    padding: "5px",
-                    marginBottom: "10px",
+                    width: "400px",
+                    height: "30px",
+                    padding: "16px",
+                    marginBottom: "3px",
                     fontSize: "16px",
-                    borderRadius: "5px",
+                    fontweight: "400",
+                    borderRadius: "12px",
                     border: "1px solid #ccc",
                     background: "rgba(250,250,250,255)",
                   }}
@@ -310,9 +323,9 @@ const LoginForm = () => {
                       display: "flex",
                       alignItems: "center",
                       color: "#212121",
-                      fontFamily: "roboto",
-                      fontSize: "18px",
-                      fontWeight: "150",
+                      font: "roboto",
+                      fontSize: "14px",
+                      fontWeight: "500",
                     }}
                   >
                     <input type="checkbox" />
@@ -322,6 +335,8 @@ const LoginForm = () => {
                     style={{
                       color: "#2E1760",
                       textAlign: "center",
+                      fontSize: "14px",
+                      fontweight: "500",
                     }}
                     onClick={handleForgotPasswordClick}
                   >
@@ -331,14 +346,16 @@ const LoginForm = () => {
                 <button
                   style={{
                     background: "#004679",
-                    color: "white",
-                    width: "100%",
-                    height: "40px",
+                    color: "#FFFFFF",
+                    width: "428px",
+                    height: "44px",
                     border: "none",
+                    borderRadius: "4px",
                     cursor: "pointer",
-                    fontSize: "18px",
+                    fontSize: "14px",
+                    fontWeight: "500",
                     borderRadius: "5px",
-                    marginTop: "30px",
+                    marginBottom: "4px",
                   }}
                 >
                   Sign In
@@ -347,37 +364,38 @@ const LoginForm = () => {
               <div
                 style={{
                   position: "absolute",
-                  width: "350px",
-                  height: "70px",
+                  width: "428px",
+                  height: "52px",
                   bottom: "0px",
                   left: "50%",
                   transform: "translateX(-50%)",
-                  color: "black",
-                  background: "white",
                 }}
               >
                 <div
                   style={{
-                    width: "350px",
-                    height: "35px",
+                    width: "428px",
+                    height: "20px",
                     textAlign: "center",
-                    color: "gray",
+                    color: "Grey/500",
+                    fontSize: "14px",
+                    fontWeight: "500",
                   }}
                 >
-                  don't have an account?
+                  Don't have a account?
                 </div>
                 <div
                   style={{
-                    textDecoration: "underline",
                     cursor: "pointer",
-                    width: "350px",
-                    height: "35px",
+                    width: "428px",
+                    height: "20px",
                     textAlign: "center",
-                    color: "blue",
+                    color: "#09548C",
+                    fontSize: "16px",
+                    fontWeight: "500",
                   }}
                   onClick={handleSignUpClick}
                 >
-                  signup
+                  Sign Up
                 </div>
               </div>
             </div>
@@ -421,8 +439,8 @@ const LoginForm = () => {
           <div
             style={{
               position: "relative",
-              width: "550px",
-              height: "650px",
+              width: "508px",
+              height: "661px",
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
@@ -430,20 +448,20 @@ const LoginForm = () => {
           >
             <div
               style={{
-                width: "310px",
-                height: "550px",
+                width: "428px",
+                height: "581px",
                 position: "relative",
               }}
             >
               <h2
                 style={{
                   marginTop: "0px",
-                  fontFamily: "Rubik",
-                  fontWeight: "310",
+                  font: "Rubik",
+                  fontWeight: "700",
                   fontSize: "24px",
                   color: "#093A5E",
-                  width: "310px",
-                  height: "30px",
+                  width: "428px",
+                  height: "32px",
                   textAlign: "center",
                 }}
               >
@@ -451,18 +469,20 @@ const LoginForm = () => {
               </h2>
               <p
                 style={{
-                  width: "310px",
-                  height: "30px",
+                  width: "428px",
+                  height: "24px",
                   textAlign: "center",
-                  color: "gray",
+                  color: "Grey/500",
+                  fontWeight: "400",
+                  fontSize: "16px",
                 }}
               >
                 Enter your credentials to continue
               </p>
               <div
                 style={{
-                  width: "310px",
-                  height: "300px",
+                  width: "428px",
+                  height: "327px",
                   position: "absolute",
                   top: "50%",
                   left: "50%",
@@ -476,28 +496,32 @@ const LoginForm = () => {
                   <input
                     type="text"
                     style={{
-                      width: "130px",
-                      height: "40px",
+                      width: "170px",
+                      height: "45px",
                       padding: "5px",
-                      marginBottom: "10px",
-                      marginRight: "25px",
+                      margintop: "0px",
+                      marginRight: "60px",
+                      font: "roboto",
+                      fontweight: "500",
                       fontSize: "16px",
-                      borderRadius: "5px",
+                      borderRadius: "10px",
                       border: "1px solid #ccc",
-                      background: "rgba(250,250,250,255)",
+                      color: "Grey/500",
                     }}
                     placeholder="First Name"
                   />
                   <input
                     type="text"
                     style={{
-                      width: "131px",
-                      height: "40px",
+                      width: "170px",
+                      height: "45px",
                       padding: "5px",
-                      marginBottom: "10px",
+                      marginBottom: "5px",
                       fontSize: "16px",
-                      borderRadius: "5px",
+                      font: "roboto",
+                      borderRadius: "10px",
                       border: "1px solid #ccc",
+                      color: "Grey/500",
                       background: "rgba(250,250,250,255)",
                     }}
                     placeholder="Last Name"
@@ -506,13 +530,15 @@ const LoginForm = () => {
                 <input
                   type="email"
                   style={{
-                    width: "300px",
-                    height: "40px",
+                    width: "412px",
+                    height: "45px",
                     padding: "5px",
-                    marginBottom: "10px",
+                    marginBottom: "5px",
                     fontSize: "16px",
-                    borderRadius: "5px",
+                    font: "roboto",
+                    borderRadius: "10px",
                     border: "1px solid #ccc",
+                    color: "Grey/500",
                     background: "rgba(250,250,250,255)",
                   }}
                   placeholder="Email Address"
@@ -520,13 +546,15 @@ const LoginForm = () => {
                 <input
                   type="password"
                   style={{
-                    width: "300px",
-                    height: "40px",
+                    width: "412px",
+                    height: "45px",
                     padding: "5px",
-                    marginBottom: "10px",
+                    marginBottom: "5px",
+                    font: "roboto",
                     fontSize: "16px",
-                    borderRadius: "5px",
+                    borderRadius: "10px",
                     border: "1px solid #ccc",
+                    color: "Grey/500",
                     background: "rgba(250,250,250,255)",
                   }}
                   placeholder="Password"
@@ -543,9 +571,9 @@ const LoginForm = () => {
                       display: "flex",
                       alignItems: "center",
                       color: "#212121",
-                      fontFamily: "roboto",
-                      fontSize: "18px",
-                      fontWeight: "150",
+                      font: "roboto",
+                      fontSize: "14px",
+                      fontWeight: "500",
                     }}
                   >
                     <input type="checkbox" />
@@ -555,13 +583,15 @@ const LoginForm = () => {
                 <button
                   style={{
                     background: "#004679",
-                    color: "white",
-                    width: "100%",
-                    height: "40px",
+                    color: "#FFFFFF",
+                    width: "428px",
+                    height: "44px",
                     border: "none",
+                    font: "roboto",
                     cursor: "pointer",
-                    fontSize: "18px",
-                    borderRadius: "5px",
+                    fontSize: "14px",
+                    fontWeight: "500",
+                    borderRadius: "4px",
                     marginTop: "30px",
                   }}
                 >
@@ -571,33 +601,36 @@ const LoginForm = () => {
               <div
                 style={{
                   position: "absolute",
-                  width: "350px",
-                  height: "70px",
+                  width: "428px",
+                  height: "52px",
                   bottom: "0px",
                   left: "50%",
                   transform: "translateX(-50%)",
-                  color: "black",
-                  background: "white",
                 }}
               >
                 <div
                   style={{
-                    width: "350px",
-                    height: "35px",
+                    width: "428px",
+                    height: "20px",
                     textAlign: "center",
-                    color: "gray",
+                    color: "Grey/500",
+                    fontSize: "14px",
+                    fontWeight: "500",
+                    font: "roboto",
                   }}
                 >
                   Already have an account?
                 </div>
                 <div
                   style={{
-                    textDecoration: "underline",
+                    fontSize: "16px",
+                    fontWeight: "500",
+                    font: "roboto",
                     cursor: "pointer",
-                    width: "350px",
-                    height: "35px",
+                    width: "428px",
+                    height: "20px",
                     textAlign: "center",
-                    color: "blue",
+                    color: "#09548C",
                   }}
                   onClick={handleSignInClick}
                 >
@@ -654,8 +687,8 @@ const LoginForm = () => {
           </div>
           <div
             style={{
-              width: "310px",
-              height: "550px",
+              width: "428px",
+              height: "466px",
               position: "relative",
               marginTop: "80px",
             }}
@@ -663,12 +696,12 @@ const LoginForm = () => {
             <h2
               style={{
                 marginTop: "0px",
-                fontFamily: "Rubik",
-                fontWeight: "310",
+                font: "Rubik",
+                fontWeight: "700",
                 fontSize: "24px",
                 color: "#093A5E",
-                width: "310px",
-                height: "30px",
+                width: "428px",
+                height: "32px",
                 textAlign: "center",
               }}
             >
@@ -676,20 +709,25 @@ const LoginForm = () => {
             </h2>
             <p
               style={{
-                width: "310px",
-                height: "30px",
+                width: "400px",
+                height: "48px",
                 textAlign: "center",
-                color: "gray",
+                color: "Grey/500",
+                fontWeight: "400",
+                fontSize: "16px",
+                font: "Roboto",
+                marginLeft: "13px",
               }}
             >
-              Enter your Email address below and we will send you a reset OTP.
+              Enter your Email address below and we will send you a password
+              reset OTP.
             </p>
             <div
               style={{
-                width: "310px",
-                height: "130px",
+                width: "428px",
+                height: "158px",
                 position: "absolute",
-                top: "45%",
+                top: "50%",
                 left: "50%",
                 transform: "translate(-50%, -50%)",
                 display: "flex",
@@ -700,12 +738,14 @@ const LoginForm = () => {
               <input
                 type="email"
                 style={{
-                  width: "300px",
-                  height: "60px",
+                  width: "418px",
+                  height: "58px",
                   padding: "5px",
                   marginBottom: "10px",
+                  font: "roboto",
                   fontSize: "16px",
-                  borderRadius: "5px",
+                  fontWeight: "500",
+                  borderRadius: "10px",
                   border: "1px solid #ccc",
                   background: "rgba(250,250,250,255)",
                 }}
@@ -716,12 +756,14 @@ const LoginForm = () => {
                 style={{
                   background: "#004679",
                   color: "white",
-                  width: "100%",
-                  height: "70px",
+                  width: "428px",
+                  height: "50px",
                   border: "none",
                   cursor: "pointer",
-                  fontSize: "18px",
+                  fontSize: "14px",
                   borderRadius: "5px",
+                  font: "roboto",
+                  fontweight: "500",
                   marginTop: "20px",
                 }}
                 onClick={handleSendButtonClick}
@@ -732,21 +774,22 @@ const LoginForm = () => {
             <div
               style={{
                 position: "absolute",
-                width: "350px",
-                height: "70px",
+                width: "428px",
+                height: "52px",
                 bottom: "40px",
                 left: "50%",
                 transform: "translateX(-50%)",
-                color: "black",
-                background: "white",
               }}
             >
               <div
                 style={{
-                  width: "350px",
-                  height: "35px",
+                  width: "428px",
+                  height: "20px",
                   textAlign: "center",
-                  color: "gray",
+                  color: "Grey/500",
+                  fontSize: "14px",
+                  font: "roboto",
+                  fontweight: "500",
                 }}
               >
                 Already have an account?
@@ -755,10 +798,13 @@ const LoginForm = () => {
                 style={{
                   textDecoration: "underline",
                   cursor: "pointer",
-                  width: "350px",
-                  height: "35px",
+                  width: "428px",
+                  height: "20px",
                   textAlign: "center",
-                  color: "blue",
+                  color: "#09548C",
+                  fontSize: "16px",
+                  font: "roboto",
+                  fontweight: "500",
                 }}
                 onClick={handleSignInClick}
               >
@@ -813,8 +859,8 @@ const LoginForm = () => {
           </div>
           <div
             style={{
-              width: "310px",
-              height: "450px",
+              width: "381px",
+              height: "195px",
               position: "relative",
               marginTop: "150px",
             }}
@@ -822,12 +868,12 @@ const LoginForm = () => {
             <h2
               style={{
                 marginTop: "0px",
-                fontFamily: "Rubik",
-                fontWeight: "310",
-                fontSize: "30px",
+                font: "Rubik",
+                fontWeight: "700",
+                fontSize: "24px",
                 color: "#093A5E",
-                width: "310px",
-                height: "30px",
+                width: "381px",
+                height: "39px",
                 textAlign: "center",
               }}
             >
@@ -835,20 +881,23 @@ const LoginForm = () => {
             </h2>
             <p
               style={{
-                width: "310px",
-                height: "30px",
+                width: "385px",
+                height: "48px",
                 textAlign: "center",
-                color: "gray",
+                color: "Grey/500",
+                font: "Roboto",
+                fontWeight: "400",
+                fontSize: "16px",
               }}
             >
               We have sent password recovery instructions to your email.
             </p>
             <div
               style={{
-                width: "310px",
-                height: "130px",
+                width: "381px",
+                height: "74px",
                 position: "absolute",
-                top: "55%",
+                top: "85%",
                 left: "50%",
                 transform: "translate(-50%, -50%)",
                 display: "flex",
@@ -859,12 +908,14 @@ const LoginForm = () => {
               <button
                 style={{
                   background: "#004679",
-                  color: "white",
+                  color: "#FFFFFF",
                   width: "100%",
-                  height: "55px",
+                  height: "50px",
                   border: "none",
                   cursor: "pointer",
-                  fontSize: "18px",
+                  font: "roboto",
+                  fontWeight: "500",
+                  fontSize: "14px",
                   borderRadius: "5px",
                   marginTop: "20px",
                 }}
@@ -903,8 +954,8 @@ const LoginForm = () => {
           <div
             style={{
               position: "relative",
-              width: "550px",
-              height: "650px",
+              width: "461px",
+              height: "464px",
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
@@ -912,20 +963,20 @@ const LoginForm = () => {
           >
             <div
               style={{
-                width: "310px",
-                height: "550px",
+                width: "381px",
+                height: "374px",
                 position: "relative",
               }}
             >
               <h2
                 style={{
                   marginTop: "0px",
-                  fontFamily: "Rubik",
-                  fontWeight: "1500",
-                  fontSize: "32px",
+                  font: "Rubik",
+                  fontWeight: "700",
+                  fontSize: "24px",
                   color: "#093A5E",
-                  width: "310px",
-                  height: "30px",
+                  width: "380px",
+                  height: "32px",
                   textAlign: "center",
                 }}
               >
@@ -933,11 +984,13 @@ const LoginForm = () => {
               </h2>
               <p
                 style={{
-                  width: "310px",
-                  height: "30px",
+                  width: "380px",
+                  height: "24px",
                   textAlign: "center",
-                  color: "gray",
-                  fontSize: "19px",
+                  color: "Grey/500",
+                  fontSize: "16px",
+                  fontWeight: "400",
+                  font: "Roboto",
                 }}
               >
                 Please choose your new password
@@ -945,10 +998,10 @@ const LoginForm = () => {
 
               <div
                 style={{
-                  width: "390px",
-                  height: "270px",
+                  width: "381px",
+                  height: "210px",
                   position: "absolute",
-                  top: "50%",
+                  top: "60%",
                   left: "50%",
                   transform: "translate(-50%, -50%)",
                   //display: "flex",
@@ -959,14 +1012,17 @@ const LoginForm = () => {
                 <input
                   type="Password"
                   style={{
-                    width: "380px",
-                    height: "40px",
+                    width: "370px",
+                    height: "48px",
                     padding: "5px",
                     marginBottom: "10px",
                     fontSize: "16px",
-                    borderRadius: "5px",
+                    borderRadius: "10px",
                     border: "1px solid #ccc",
                     background: "rgba(250,250,250,255)",
+                    color: "Grey/500",
+                    fontWeight: "500",
+                    font: "Roboto",
                   }}
                   placeholder="New password"
                 />
@@ -974,15 +1030,18 @@ const LoginForm = () => {
                 <input
                   type="password"
                   style={{
-                    width: "380px",
-                    height: "40px",
+                    width: "370px",
+                    height: "48px",
                     padding: "5px",
                     marginBottom: "6px",
                     fontSize: "16px",
-                    borderRadius: "5px",
+                    borderRadius: "10px",
                     border: "1px solid #ccc",
                     background: "rgba(250,250,250,255)",
                     marginTop: "8px",
+                    color: "Grey/500",
+                    fontWeight: "500",
+                    font: "Roboto",
                   }}
                   placeholder="confirm password"
                 />
@@ -992,10 +1051,10 @@ const LoginForm = () => {
                     //display: "flex",
                     //alignItems: "center",
                     color: "red",
-                    fontFamily: "roboto",
-                    fontSize: "18px",
-                    fontWeight: "150",
-                    marginTop: "5px",
+                    font: "roboto",
+                    fontSize: "14px",
+                    fontWeight: "500",
+                    marginTop: "2px",
                   }}
                 >
                   Both password must me match!
@@ -1006,12 +1065,15 @@ const LoginForm = () => {
                     background: "#004679",
                     color: "white",
                     width: "100%",
-                    height: "50px",
+                    height: "44px",
                     border: "none",
                     cursor: "pointer",
                     fontSize: "18px",
-                    borderRadius: "5px",
+                    borderRadius: "4px",
                     marginTop: "30px",
+                    font: "roboto",
+                    fontSize: "14px",
+                    fontWeight: "500",
                   }}
                   onClick={handleResetClick}
                 >
@@ -1057,8 +1119,8 @@ const LoginForm = () => {
           ></div>
           <div
             style={{
-              width: "310px",
-              height: "550px",
+              width: "381px",
+              height: "448px",
               position: "relative",
               marginTop: "80px",
             }}
@@ -1066,11 +1128,11 @@ const LoginForm = () => {
             <h2
               style={{
                 marginTop: "0px",
-                fontFamily: "Rubik",
-                fontWeight: "1200",
-                fontSize: "30px",
+                font: "Rubik",
+                fontWeight: "700",
+                fontSize: "24px",
                 color: "#093A5E",
-                width: "310px",
+                width: "381px",
                 height: "30px",
                 textAlign: "center",
               }}
@@ -1079,18 +1141,21 @@ const LoginForm = () => {
             </h2>
             <p
               style={{
-                width: "310px",
-                height: "30px",
+                width: "381px",
+                height: "24px",
                 textAlign: "center",
-                color: "gray",
+                color: "Grey/500",
+                font: "Roboto",
+                fontWeight: "400",
+                fontSize: "16px",
               }}
             >
               We've send you on John****@gmail.com
             </p>
             <div
               style={{
-                width: "400px",
-                height: "300px",
+                width: "381px",
+                height: "140px",
                 position: "absolute",
                 top: "50%",
                 left: "50%",
@@ -1102,11 +1167,11 @@ const LoginForm = () => {
             >
               <div
                 style={{
-                  width: "380px",
-                  height: "90px",
+                  width: "381px",
+                  height: "60px",
                   position: "absolute",
                   top: "0%",
-                  left: "2%",
+
                   //transform: "translate(-50%, -50%)",
                   display: "flex",
                   flexDirection: "row",
@@ -1116,33 +1181,14 @@ const LoginForm = () => {
                 <input
                   type="number"
                   style={{
-                    width: "50px",
-                    height: "50px",
-                    padding: "5px",
+                    width: "75px",
+                    height: "48px",
+                    padding: "2px, 16px, 2px, 16px",
                     marginBottom: "10px",
                     fontSize: "20px",
                     textAlign: "center",
-                    borderRadius: "5px",
-                    border: "1px solid #ccc",
-                    background: "rgba(250,250,250,255)",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
-                  placeholder="0"
-                />
-                <input
-                  type="number"
-                  style={{
-                    width: "50px",
-                    height: "50px",
-                    padding: "5px",
-                    marginBottom: "10px",
-                    marginLeft: "15px",
-                    fontSize: "20px",
-                    textAlign: "center",
-                    borderRadius: "5px",
-                    border: "1px solid #ccc",
+                    borderRadius: "10px",
+                    border: "none",
                     background: "rgba(250,250,250,255)",
                   }}
                   placeholder="0"
@@ -1150,15 +1196,15 @@ const LoginForm = () => {
                 <input
                   type="number"
                   style={{
-                    width: "50px",
-                    height: "50px",
-                    padding: "5px",
+                    width: "75px",
+                    height: "48px",
+                    padding: "2px, 16px, 2px, 16px",
                     marginBottom: "10px",
-                    marginLeft: "15px",
+                    marginLeft: "10px",
                     fontSize: "20px",
                     textAlign: "center",
-                    borderRadius: "5px",
-                    border: "1px solid #ccc",
+                    borderRadius: "10px",
+                    border: "none",
                     background: "rgba(250,250,250,255)",
                   }}
                   placeholder="0"
@@ -1166,15 +1212,31 @@ const LoginForm = () => {
                 <input
                   type="number"
                   style={{
-                    width: "50px",
-                    height: "50px",
-                    padding: "5px",
+                    width: "75px",
+                    height: "48px",
+                    padding: "2px, 16px, 2px, 16px",
                     marginBottom: "10px",
-                    marginLeft: "15px",
+                    marginLeft: "10px",
+                    fontSize: "20px",
+                    textAlign: "center",
+                    borderRadius: "10px",
+                    border: "none",
+                    background: "rgba(250,250,250,255)",
+                  }}
+                  placeholder="0"
+                />
+                <input
+                  type="number"
+                  style={{
+                    width: "75px",
+                    height: "48px",
+                    padding: "2px, 16px, 2px, 16px",
+                    marginBottom: "10px",
+                    marginLeft: "10px",
                     textAlign: "center",
                     fontSize: "20px",
-                    borderRadius: "5px",
-                    border: "1px solid #ccc",
+                    borderRadius: "10px",
+                    border: "none",
                     background: "rgba(250,250,250,255)",
                   }}
                   placeholder="0"
@@ -1188,38 +1250,42 @@ const LoginForm = () => {
                 <button
                   style={{
                     background: "#004679",
-                    color: "white",
-                    width: "100%",
-                    height: "50px",
+                    color: "#FFFFFF",
+                    width: "383px",
+                    height: "44px",
                     border: "none",
                     cursor: "pointer",
-                    fontSize: "18px",
-                    borderRadius: "5px",
+                    fontSize: "14px",
+                    font: "roboto",
+                    fontweight: "500",
+                    borderRadius: "4px",
                     marginTop: "20px",
                   }}
                 >
-                  continue
+                  Continue
                 </button>
               </div>
             </div>
             <div
               style={{
                 position: "relative",
-                width: "390px",
-                height: "70px",
+                width: "381px",
+                height: "80px",
                 bottom: "40px",
                 top: "270px",
                 left: "50%",
                 transform: "translateX(-50%)",
-                color: "black",
               }}
             >
               <div
                 style={{
-                  width: "390px",
-                  height: "35px",
+                  width: "381px",
+                  height: "20px",
                   textAlign: "center",
-                  color: "gray",
+                  color: "Grey/600",
+                  fontweight: "500",
+                  font: "roboto",
+                  fontsize: "14px",
                 }}
               >
                 Did not recieve the email? Check your spam filter, or
@@ -1227,14 +1293,14 @@ const LoginForm = () => {
               <button
                 style={{
                   background: "white",
-                  color: "#004679",
-                  width: "390px",
-                  height: "50px",
-                  border: "3px solid #004679",
+                  color: "#1D709F",
+                  width: "381px",
+                  height: "48px",
+                  border: "3px solid #1D709F",
                   cursor: "pointer",
                   fontSize: "18px",
                   borderRadius: "5px",
-                  marginTop: "0px",
+                  marginTop: "16px",
                 }}
               >
                 Resend Code
