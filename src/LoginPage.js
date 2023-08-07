@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import image from "./images/Frame.jpg.png";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
 import frame2image from "./images/frame2.jpg.png";
 
 const LoginForm = () => {
@@ -53,6 +55,29 @@ const LoginForm = () => {
     setIsBackToSignIn(false);
     setIsResetPassword(true);
   };
+  const validationSchema = Yup.object().shape({
+    email: Yup.string()
+      .required("Email is required")
+      .matches(
+        /^[a-zA-Z_]*$/,
+        "Username can only contain letters and underscores"
+      ),
+    password: Yup.string().required("Password is required")
+    .matches(
+      /^(?=.*[A-Z])/,
+      "Password must contain at least one uppercase letter"
+    ),
+  });
+  
+  
+    const initialValues = {
+      email: "",
+      password: "",
+    };
+    const onSubmit = (values) => {
+      console.log(values);
+    };
+
 
   if (
     !isSignInClicked &&
@@ -194,6 +219,12 @@ const LoginForm = () => {
     );
   } else if (isSignInClicked) {
     return (
+      <Formik
+      initialValues={initialValues}
+      onSubmit={onSubmit}
+      validationSchema={validationSchema}
+    >
+      <Form>
       <div
         style={{
           display: "flex",
@@ -280,8 +311,9 @@ const LoginForm = () => {
                   justifyContent: "space-between",
                 }}
               >
-                <input
+                <Field
                   type="email"
+                  name="email"
                   style={{
                     width: "400px",
                     height: "30px",
@@ -294,10 +326,13 @@ const LoginForm = () => {
                     background: "rgba(250,250,250,255)",
                   }}
                   placeholder="Email Address"
-                />
+                />  <ErrorMessage name="email" 
+                component="div" 
+                style={{ color: "red", fontSize: "14px", marginTop: "5px" }} />
 
-                <input
+                <Field
                   type="password"
+                  name="password"
                   style={{
                     width: "400px",
                     height: "30px",
@@ -311,6 +346,9 @@ const LoginForm = () => {
                   }}
                   placeholder="Password"
                 />
+                <ErrorMessage name="password" 
+                    component="div" 
+                    style={{ color: "red", fontSize: "14px", marginTop: "5px" }} />
                 <div
                   style={{
                     display: "flex",
@@ -405,6 +443,9 @@ const LoginForm = () => {
           <img src={image} style={{ width: "832px" }} alt="Image" />
         </div>
       </div>
+      
+      </Form>
+    </Formik>
     );
   } else if (isSignUpClicked) {
     return (
