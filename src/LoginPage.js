@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import "./App.css";
 import image from "./images/Frame.jpg.png";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import frame2image from "./images/frame2.jpg.png";
 
 const LoginForm = () => {
+    // State for controlling different UI views
   const [isSignInClicked, setIsSignInClicked] = useState(false);
   const [isSignUpClicked, setIsSignUpClicked] = useState(false);
   const [isForgotPasswordClicked, setIsForgotPasswordClicked] = useState(false);
@@ -12,6 +14,7 @@ const LoginForm = () => {
   const [isBackToSignIn, setIsBackToSignIn] = useState(false);
   const [isResetPassword, setIsResetPassword] = useState(false);
 
+  // Handlers for different UI transitions
   const handleSignInClick = () => {
     setIsSignInClicked(true);
     setIsSignUpClicked(false);
@@ -55,6 +58,7 @@ const LoginForm = () => {
     setIsBackToSignIn(false);
     setIsResetPassword(true);
   };
+  // Validation schema for Formik
   const validationSchema = Yup.object().shape({
     email: Yup.string()
       .required("Email is required")
@@ -62,23 +66,28 @@ const LoginForm = () => {
         /^[a-zA-Z_]*$/,
         "Username can only contain letters and underscores"
       ),
-    password: Yup.string().required("Password is required")
-    .matches(
-      /^(?=.*[A-Z])/,
-      "Password must contain at least one uppercase letter"
-    ),
+    password: Yup.string()
+      .required("Password is required")
+      .matches(
+        /^(?=.*[A-Z])/,
+        "Password must contain at least one uppercase letter"
+      ),
+    firstName: Yup.string().required("first Name is required"),
+    lastName: Yup.string().required("last Name is required"),
   });
-  
-  
-    const initialValues = {
-      email: "",
-      password: "",
-    };
-    const onSubmit = (values) => {
-      console.log(values);
-    };
 
-
+  // Initial values for Formik form
+  const initialValues = {
+    email: "",
+    password: "",
+    firstName: "",
+    lastName: "",
+  };
+  const onSubmit = (values) => {
+    console.log(values);
+  };
+ 
+    // Render different UI components based on state
   if (
     !isSignInClicked &&
     !isSignUpClicked &&
@@ -88,878 +97,272 @@ const LoginForm = () => {
     !isResetPassword
   ) {
     return (
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          width: "100%",
-          height: "100vh",
-        }}
-      >
-        <div
-          style={{
-            flex: 0.5,
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            flexDirection: "column",
-          }}
-        >
+      // JSX for the default view
+      <div className="main-container">
+        <div className="left-container">
           <img
             src={frame2image}
             style={{ width: "428px", height: "40px" }}
             alt="Image"
           />
 
-          <div
-            style={{ width: "428px", height: "444px", position: "relative" }}
-          >
-            <div
-              style={{
-                width: "428px",
-                height: "42px",
-                position: "absolute",
-                top: "20%",
-                left: "50%",
-                transform: "translate(-50%, -50%)",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              <h2
-                style={{
-                  //fontFamily: "Rubik",
-                  fontWeight: "700",
-                  fontSize: "34px",
-                  color: " #093A5E",
-                  lineHeight: "42px",
-                }}
-              >
-                Hi, Welcome Back
-              </h2>
+          <div className="mini-container">
+            <div className="heading-container">
+              <h2 className="heading">Hi, Welcome Back</h2>
             </div>
-            <div
-              style={{
-                width: "428px",
-                height: "44px",
-                position: "absolute",
-                top: "45%",
-                left: "50%",
-                transform: "translate(-50%, -50%)",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              <button
-                style={{
-                  background: "#004679",
-                  color: "white",
-                  width: "428px",
-                  height: "44px",
-                  borderRadius: "4px",
-                  border: "none",
-                  cursor: "pointer",
-                  fontSize: "14px",
-                  weight: "500",
-                }}
-                onClick={handleSignInClick}
-              >
-                Sign In
-              </button>
+            <div className="button-div">
+              <button onClick={handleSignInClick}>Sign In</button>
             </div>
-            <div
-              style={{
-                position: "absolute",
-                width: "428px",
-                height: "70px",
-                bottom: "0px",
-                left: "50%",
-                top: "70%",
-                transform: "translateX(-50%)",
-              }}
-            >
-              <div
-                style={{
-                  width: "428px",
-                  height: "35px",
-                  textAlign: "center",
-                  color: "grey/500",
-                  fontsize: "14px",
-                  font: "Roboto",
-                  weight: "500",
-                }}
-              >
-                Don't have an account?
-              </div>
-              <div
-                style={{
-                  textDecoration: "underline",
-                  cursor: "pointer",
-                  width: "428px",
-                  height: "35px",
-                  textAlign: "center",
-                  color: "#09548C",
-                  font: "roboto",
-                  fontSize: "16px",
-                  fontweight: "500",
-                }}
-                onClick={handleSignUpClick}
-              >
+            <div className="last">
+              <div className="last-1">Don't have an account?</div>
+              <div className="last-2" onClick={handleSignUpClick}>
                 Sign Up
               </div>
             </div>
           </div>
         </div>
-        <div style={{ flex: 0.5, display: "flex" }}>
+        <div className="right-div">
           <img src={image} style={{ width: "832px" }} alt="Image" />
         </div>
       </div>
     );
   } else if (isSignInClicked) {
     return (
+      // JSX for the Formik sign-in form
       <Formik
-      initialValues={initialValues}
-      onSubmit={onSubmit}
-      validationSchema={validationSchema}
-    >
-      <Form>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          width: "100%",
-          height: "100vh",
-        }}
+        initialValues={initialValues}
+        onSubmit={onSubmit}
+        validationSchema={validationSchema}
       >
-        <div
-          style={{
-            flex: 0.5,
-            display: "flex",
-            justifyContent: "center",
-            flexDirection: "column",
-            alignItems: "center",
-            position: "relative",
-          }}
-        >
-          <img
-            src={frame2image}
-            style={{
-              width: "350px",
-              height: "40px",
-              background: "white",
-              marginTop: "-10px",
-            }}
-            alt="Image"
-          />
-
-          <div
-            style={{
-              position: "relative",
-              width: "508px",
-              height: "680px",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <div
-              style={{
-                width: "428px",
-                height: "600px",
-                position: "relative",
-              }}
-            >
-              <h2
+        <Form>
+          <div className="main-container">
+            <div className="left-container">
+              <img
+                src={frame2image}
                 style={{
-                  marginTop: "0px",
-                  font: "Rubik",
-                  fontWeight: "700",
-                  fontSize: "24px",
-                  color: "#093A5E",
-                  width: "428px",
-                  height: "30px",
-                  textAlign: "center",
+                  width: "350px",
+                  height: "40px",
+                  background: "white",
+                  marginTop: "-10px",
                 }}
-              >
-                Sign In
-              </h2>
-              <p
-                style={{
-                  width: "428px",
-                  height: "30px",
-                  textAlign: "center",
-                  color: "#9E9E9E",
-                  fontSize: "16px",
-                  fontweight: "400",
-                }}
-              >
-                Enter your credentials to continue
-              </p>
+                alt="Image"
+              />
 
-              <div
-                style={{
-                  width: "428px",
-                  height: "290px",
-                  position: "absolute",
-                  top: "50%",
-                  left: "50%",
-                  transform: "translate(-50%, -50%)",
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "space-between",
-                }}
-              >
-                <Field
-                  type="email"
-                  name="email"
-                  style={{
-                    width: "400px",
-                    height: "30px",
-                    padding: "16px",
-                    marginBottom: "1px",
-                    fontSize: "16px",
-                    fontweight: "400",
-                    borderRadius: "12px",
-                    border: "0.5px solid #ccc",
-                    background: "rgba(250,250,250,255)",
-                  }}
-                  placeholder="Email Address"
-                />  <ErrorMessage name="email" 
-                component="div" 
-                style={{ color: "red", fontSize: "14px", marginTop: "5px" }} />
+              <div className="login-page-container">
+                <div className="login-page-mini">
+                  <h2 className="heading-login-page">Sign In</h2>
+                  <p className="sub-heading-login-page">
+                    Enter your credentials to continue
+                  </p>
 
-                <Field
-                  type="password"
-                  name="password"
-                  style={{
-                    width: "400px",
-                    height: "30px",
-                    padding: "16px",
-                    marginBottom: "3px",
-                    fontSize: "16px",
-                    fontweight: "400",
-                    borderRadius: "12px",
-                    border: "1px solid #ccc",
-                    background: "rgba(250,250,250,255)",
-                  }}
-                  placeholder="Password"
-                />
-                <ErrorMessage name="password" 
-                    component="div" 
-                    style={{ color: "red", fontSize: "14px", marginTop: "5px" }} />
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                  }}
-                >
-                  <label
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      color: "#212121",
-                      font: "roboto",
-                      fontSize: "14px",
-                      fontWeight: "500",
-                    }}
-                  >
-                    <input type="checkbox" />
-                    Remember me
-                  </label>
-                  <div
-                    style={{
-                      color: "#2E1760",
-                      textAlign: "center",
-                      fontSize: "14px",
-                      fontweight: "500",
-                    }}
-                    onClick={handleForgotPasswordClick}
-                  >
-                    Forgot Password?
+                  <div className="input-field-login">
+                    <Field
+                      className="email-login"
+                      type="email"
+                      name="email"
+                      placeholder="Email Address"
+                    />
+                    <ErrorMessage
+                      className="error-message"
+                      name="email"
+                      component="div"
+                    />
+                    <Field
+                      className="password-login"
+                      type="password"
+                      name="password"
+                      placeholder="Password"
+                    />
+                    <ErrorMessage
+                      className="error-message"
+                      name="password"
+                      component="div"
+                    />
+                    <div className="security">
+                      <label className="checkbox">
+                        <input type="checkbox" />
+                        Remember me
+                      </label>
+                      <div
+                        className="forgot-password"
+                        onClick={handleForgotPasswordClick}
+                      >
+                        Forgot Password?
+                      </div>
+                    </div>
+                    <button>Sign In</button>
                   </div>
-                </div>
-                <button
-                  style={{
-                    background: "#004679",
-                    color: "#FFFFFF",
-                    width: "428px",
-                    height: "44px",
-                    border: "none",
-                    borderRadius: "4px",
-                    cursor: "pointer",
-                    fontSize: "14px",
-                    fontWeight: "500",
-                    borderRadius: "5px",
-                    marginBottom: "4px",
-                  }}
-                >
-                  Sign In
-                </button>
-              </div>
-              <div
-                style={{
-                  position: "absolute",
-                  width: "428px",
-                  height: "52px",
-                  bottom: "0px",
-                  left: "50%",
-                  transform: "translateX(-50%)",
-                }}
-              >
-                <div
-                  style={{
-                    width: "428px",
-                    height: "20px",
-                    textAlign: "center",
-                    color: "Grey/500",
-                    fontSize: "14px",
-                    fontWeight: "500",
-                  }}
-                >
-                  Don't have a account?
-                </div>
-                <div
-                  style={{
-                    cursor: "pointer",
-                    width: "428px",
-                    height: "20px",
-                    textAlign: "center",
-                    color: "#09548C",
-                    fontSize: "16px",
-                    fontWeight: "500",
-                  }}
-                  onClick={handleSignUpClick}
-                >
-                  Sign Up
+                  <div className="main-last-login">
+                    <div className="last-1-login">Don't have a account?</div>
+                    <div className="last-2-login" onClick={handleSignUpClick}>
+                      Sign Up
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
+            <div className="right-div">
+              <img src={image} style={{ width: "832px" }} alt="Image" />
+            </div>
           </div>
-        </div>
-        <div style={{ flex: 0.5, display: "flex" }}>
-          <img src={image} style={{ width: "832px" }} alt="Image" />
-        </div>
-      </div>
-      
-      </Form>
-    </Formik>
+        </Form>
+      </Formik>
     );
   } else if (isSignUpClicked) {
     return (
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          width: "100%",
-          height: "100vh",
-        }}
-      >
-        <div
-          style={{
-            flex: 0.5,
-            display: "flex",
-            justifyContent: "center",
-            flexDirection: "column",
-            alignItems: "center",
-            position: "relative",
-          }}
-        >
+      // JSX for the Formik sign-up form
+      <Formik initialValues={initialValues} validationSchema={validationSchema}>
+        <Form>
+          <div className="main-container">
+            <div className="left-container">
+              <img
+                src={frame2image}
+                style={{
+                  width: "350px",
+                  height: "40px",
+                  background: "white",
+                  marginTop: "-10px",
+                }}
+                alt="Image"
+              />
+              <div className="signup-page">
+                <div className="signup-page-mini">
+                  <h2 className="heading-signup-page">Sign Up</h2>
+                  <p className="sub-heading-signup-page">
+                    Enter your credentials to continue
+                  </p>
+                  <div className="inputfield-signup">
+                    <div>
+                      <Field
+                        className="firstname-signup"
+                        type="FirstName"
+                        name="FirstName"
+                        placeholder="First Name"
+                      />
+                      <ErrorMessage
+                        className="error-message"
+                        name="firstName"
+                        component="div"
+                      />
+                      <Field
+                        className="lastname-signup"
+                        type="lastName"
+                        name="lastName"
+                        placeholder="Last Name"
+                      />
+                      <ErrorMessage
+                        className="error-message"
+                        name="lastName"
+                        component="div"
+                      />
+                    </div>
+                    <Field
+                      className="email-signup"
+                      type="email"
+                      name="email"
+                      placeholder="Email Address"
+                    />
+                    <ErrorMessage
+                      className="error-message"
+                      name="email"
+                      component="div"
+                    />
+
+                    <Field
+                      className="password-signup"
+                      type="password"
+                      name="password"
+                      placeholder="Password"
+                    />
+                    <ErrorMessage
+                      className="error-message"
+                      name="password"
+                      component="div"
+                    />
+                    <div className="security">
+                      <label className="checkbox">
+                        <input type="checkbox" />
+                        Remember me
+                      </label>
+                    </div>
+                    <button onClick={handleSignUpClick}>Sign up</button>
+                  </div>
+                  <div className="last-signup">
+                    <div className="last-1-signup">
+                      Already have an account?
+                    </div>
+                    <div className="last-2-signup" onClick={handleSignInClick}>
+                      Sign In
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="right-div">
+              <img src={image} style={{ width: "832px" }} alt="Image" />
+            </div>
+          </div>
+        </Form>
+      </Formik>
+    );
+  } else if (isForgotPasswordClicked) {
+    return (
+      
+      <div className="main-container">
+        <div className="left-container">
           <img
             src={frame2image}
             style={{
               width: "350px",
-              height: "40px",
+              height: "45px",
               background: "white",
-              marginTop: "-10px",
+              margintop: "10px",
             }}
             alt="Image"
           />
-          <div
-            style={{
-              position: "relative",
-              width: "508px",
-              height: "661px",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <div
-              style={{
-                width: "428px",
-                height: "581px",
-                position: "relative",
-              }}
-            >
-              <h2
-                style={{
-                  marginTop: "0px",
-                  font: "Rubik",
-                  fontWeight: "700",
-                  fontSize: "24px",
-                  color: "#093A5E",
-                  width: "428px",
-                  height: "32px",
-                  textAlign: "center",
-                }}
-              >
-                Sign Up
-              </h2>
-              <p
-                style={{
-                  width: "428px",
-                  height: "24px",
-                  textAlign: "center",
-                  color: "Grey/500",
-                  fontWeight: "400",
-                  fontSize: "16px",
-                }}
-              >
-                Enter your credentials to continue
-              </p>
-              <div
-                style={{
-                  width: "428px",
-                  height: "327px",
-                  position: "absolute",
-                  top: "50%",
-                  left: "50%",
-                  transform: "translate(-50%, -50%)",
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "space-between",
-                }}
-              >
-                <div className="form-inputs">
-                  <input
-                    type="text"
-                    style={{
-                      width: "170px",
-                      height: "45px",
-                      padding: "5px",
-                      margintop: "0px",
-                      marginRight: "60px",
-                      font: "roboto",
-                      fontweight: "500",
-                      fontSize: "16px",
-                      borderRadius: "10px",
-                      border: "1px solid #ccc",
-                      color: "Grey/500",
-                    }}
-                    placeholder="First Name"
-                  />
-                  <input
-                    type="text"
-                    style={{
-                      width: "170px",
-                      height: "45px",
-                      padding: "5px",
-                      marginBottom: "5px",
-                      fontSize: "16px",
-                      font: "roboto",
-                      borderRadius: "10px",
-                      border: "1px solid #ccc",
-                      color: "Grey/500",
-                      background: "rgba(250,250,250,255)",
-                    }}
-                    placeholder="Last Name"
-                  />
-                </div>
-                <input
-                  type="email"
-                  style={{
-                    width: "412px",
-                    height: "45px",
-                    padding: "5px",
-                    marginBottom: "5px",
-                    fontSize: "16px",
-                    font: "roboto",
-                    borderRadius: "10px",
-                    border: "1px solid #ccc",
-                    color: "Grey/500",
-                    background: "rgba(250,250,250,255)",
-                  }}
-                  placeholder="Email Address"
-                />
-                <input
-                  type="password"
-                  style={{
-                    width: "412px",
-                    height: "45px",
-                    padding: "5px",
-                    marginBottom: "5px",
-                    font: "roboto",
-                    fontSize: "16px",
-                    borderRadius: "10px",
-                    border: "1px solid #ccc",
-                    color: "Grey/500",
-                    background: "rgba(250,250,250,255)",
-                  }}
-                  placeholder="Password"
-                />
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                  }}
-                >
-                  <label
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      color: "#212121",
-                      font: "roboto",
-                      fontSize: "14px",
-                      fontWeight: "500",
-                    }}
-                  >
-                    <input type="checkbox" />
-                    Remember me
-                  </label>
-                </div>
-                <button
-                  style={{
-                    background: "#004679",
-                    color: "#FFFFFF",
-                    width: "428px",
-                    height: "44px",
-                    border: "none",
-                    font: "roboto",
-                    cursor: "pointer",
-                    fontSize: "14px",
-                    fontWeight: "500",
-                    borderRadius: "4px",
-                    marginTop: "30px",
-                  }}
-                >
-                  Sign up
-                </button>
-              </div>
-              <div
-                style={{
-                  position: "absolute",
-                  width: "428px",
-                  height: "52px",
-                  bottom: "0px",
-                  left: "50%",
-                  transform: "translateX(-50%)",
-                }}
-              >
-                <div
-                  style={{
-                    width: "428px",
-                    height: "20px",
-                    textAlign: "center",
-                    color: "Grey/500",
-                    fontSize: "14px",
-                    fontWeight: "500",
-                    font: "roboto",
-                  }}
-                >
-                  Already have an account?
-                </div>
-                <div
-                  style={{
-                    fontSize: "16px",
-                    fontWeight: "500",
-                    font: "roboto",
-                    cursor: "pointer",
-                    width: "428px",
-                    height: "20px",
-                    textAlign: "center",
-                    color: "#09548C",
-                  }}
-                  onClick={handleSignInClick}
-                >
-                  Sign In
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div style={{ flex: 0.5, display: "flex" }}>
-          <img src={image} style={{ width: "832px" }} alt="Image" />
-        </div>
-      </div>
-    );
-  } else if (isForgotPasswordClicked) {
-    return (
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          width: "100%",
-          height: "100vh",
-        }}
-      >
-        <div
-          style={{
-            flex: 0.5,
-            display: "flex",
-            // justifyContent: "center",
-            flexDirection: "column",
-            alignItems: "center",
-            position: "relative",
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              flexDirection: "column",
-              alignItems: "center",
-              marginTop: "20px",
-            }}
-          >
-            <img
-              src={frame2image}
-              style={{
-                width: "350px",
-                height: "45px",
-                background: "white",
-                margintop: "10px",
-              }}
-              alt="Image"
-            />
-          </div>
-          <div
-            style={{
-              width: "428px",
-              height: "466px",
-              position: "relative",
-              marginTop: "80px",
-            }}
-          >
-            <h2
-              style={{
-                marginTop: "0px",
-                font: "Rubik",
-                fontWeight: "700",
-                fontSize: "24px",
-                color: "#093A5E",
-                width: "428px",
-                height: "32px",
-                textAlign: "center",
-              }}
-            >
-              Forgot Password?
-            </h2>
-            <p
-              style={{
-                width: "400px",
-                height: "48px",
-                textAlign: "center",
-                color: "Grey/500",
-                fontWeight: "400",
-                fontSize: "16px",
-                font: "Roboto",
-                marginLeft: "13px",
-              }}
-            >
+
+          <div className="forgot-password-page">
+            <h2 className="heading-forgot-page">Forgot Password?</h2>
+            <p className="sub-heading-forgot-page">
               Enter your Email address below and we will send you a password
               reset OTP.
             </p>
-            <div
-              style={{
-                width: "428px",
-                height: "158px",
-                position: "absolute",
-                top: "50%",
-                left: "50%",
-                transform: "translate(-50%, -50%)",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "space-between",
-              }}
-            >
+            <div className="inputfiled-forgot-page">
               <input
+                className="email-forgot-page"
                 type="email"
-                style={{
-                  width: "418px",
-                  height: "58px",
-                  padding: "5px",
-                  marginBottom: "10px",
-                  font: "roboto",
-                  fontSize: "16px",
-                  fontWeight: "500",
-                  borderRadius: "10px",
-                  border: "1px solid #ccc",
-                  background: "rgba(250,250,250,255)",
-                }}
                 placeholder="Email Address"
               />
 
-              <button
-                style={{
-                  background: "#004679",
-                  color: "white",
-                  width: "428px",
-                  height: "50px",
-                  border: "none",
-                  cursor: "pointer",
-                  fontSize: "14px",
-                  borderRadius: "5px",
-                  font: "roboto",
-                  fontweight: "500",
-                  marginTop: "20px",
-                }}
-                onClick={handleSendButtonClick}
-              >
+              <button className="send-button" onClick={handleSendButtonClick}>
                 Send
               </button>
             </div>
-            <div
-              style={{
-                position: "absolute",
-                width: "428px",
-                height: "52px",
-                bottom: "40px",
-                left: "50%",
-                transform: "translateX(-50%)",
-              }}
-            >
-              <div
-                style={{
-                  width: "428px",
-                  height: "20px",
-                  textAlign: "center",
-                  color: "Grey/500",
-                  fontSize: "14px",
-                  font: "roboto",
-                  fontweight: "500",
-                }}
-              >
-                Already have an account?
-              </div>
-              <div
-                style={{
-                  textDecoration: "underline",
-                  cursor: "pointer",
-                  width: "428px",
-                  height: "20px",
-                  textAlign: "center",
-                  color: "#09548C",
-                  fontSize: "16px",
-                  font: "roboto",
-                  fontweight: "500",
-                }}
-                onClick={handleSignInClick}
-              >
+            <div className="last-div-forgot">
+              <div className="last-1-forgot">Already have an account?</div>
+              <div className="last-2-forgot" onClick={handleSignInClick}>
                 Sign In
               </div>
             </div>
           </div>
         </div>
-        <div style={{ flex: 0.5, display: "flex" }}>
+        <div className="right-div">
           <img src={image} style={{ width: "832px" }} alt="Image" />
         </div>
       </div>
     );
   } else if (isMailSent) {
     return (
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          width: "100%",
-          height: "100vh",
-        }}
-      >
-        <div
-          style={{
-            flex: 0.5,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            position: "relative",
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              flexDirection: "column",
-              alignItems: "center",
-              marginTop: "20px",
-            }}
-          >
-            <img
-              src={frame2image}
-              style={{
-                width: "350px",
-                height: "45px",
-                background: "white",
-                margintop: "10px",
-              }}
-              alt="Image"
-            />
-          </div>
-          <div
-            style={{
-              width: "381px",
-              height: "195px",
-              position: "relative",
-              marginTop: "150px",
-            }}
-          >
-            <h2
-              style={{
-                marginTop: "0px",
-                font: "Rubik",
-                fontWeight: "700",
-                fontSize: "24px",
-                color: "#093A5E",
-                width: "381px",
-                height: "39px",
-                textAlign: "center",
-              }}
-            >
-              Check Mail
-            </h2>
-            <p
-              style={{
-                width: "385px",
-                height: "48px",
-                textAlign: "center",
-                color: "Grey/500",
-                font: "Roboto",
-                fontWeight: "400",
-                fontSize: "16px",
-              }}
-            >
+      <div className="main-container">
+        <div className="left-container">
+          <div className="mailsent">
+            <h2 className="heading-mailsent">Check Mail</h2>
+            <p className="sub-heading-mailsent">
               We have sent password recovery instructions to your email.
             </p>
-            <div
-              style={{
-                width: "381px",
-                height: "74px",
-                position: "absolute",
-                top: "85%",
-                left: "50%",
-                transform: "translate(-50%, -50%)",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "space-between",
-              }}
-            >
+            <div className="button-div-mailsent">
               <button
-                style={{
-                  background: "#004679",
-                  color: "#FFFFFF",
-                  width: "100%",
-                  height: "50px",
-                  border: "none",
-                  cursor: "pointer",
-                  font: "roboto",
-                  fontWeight: "500",
-                  fontSize: "14px",
-                  borderRadius: "5px",
-                  marginTop: "20px",
-                }}
+                className="button-mailsent"
                 onClick={handleBackToSignInClick}
               >
                 Back to Sign In
@@ -967,141 +370,39 @@ const LoginForm = () => {
             </div>
           </div>
         </div>
-        <div style={{ flex: 0.5, display: "flex" }}>
+        <div className="right-div">
           <img src={image} style={{ width: "832px" }} alt="Image" />
         </div>
       </div>
     );
   } else if (isBackToSignIn) {
     return (
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          width: "100%",
-          height: "100vh",
-        }}
-      >
-        <div
-          style={{
-            flex: 0.5,
-            display: "flex",
-            justifyContent: "center",
-            flexDirection: "column",
-            alignItems: "center",
-            position: "relative",
-          }}
-        >
+      <div className="main-container">
+        <div className="left-container">
           <div
-            style={{
-              position: "relative",
-              width: "461px",
-              height: "464px",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
+            className="reset-page"
           >
-            <div
-              style={{
-                width: "381px",
-                height: "374px",
-                position: "relative",
-              }}
-            >
-              <h2
-                style={{
-                  marginTop: "0px",
-                  font: "Rubik",
-                  fontWeight: "700",
-                  fontSize: "24px",
-                  color: "#093A5E",
-                  width: "380px",
-                  height: "32px",
-                  textAlign: "center",
-                }}
-              >
-                Reset Password
-              </h2>
-              <p
-                style={{
-                  width: "380px",
-                  height: "24px",
-                  textAlign: "center",
-                  color: "Grey/500",
-                  fontSize: "16px",
-                  fontWeight: "400",
-                  font: "Roboto",
-                }}
-              >
+            <div className="reset-mini-div">
+              <h2 className="heading-reset-page">Reset Password</h2>
+              <p className="sub-heading-reset-page">
                 Please choose your new password
               </p>
 
-              <div
-                style={{
-                  width: "381px",
-                  height: "210px",
-                  position: "absolute",
-                  top: "60%",
-                  left: "50%",
-                  transform: "translate(-50%, -50%)",
-                  //display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "space-between",
-                }}
-              >
+              <div className="inputfield-reset-page">
                 <input
+                  className="new-password-input"
                   type="Password"
-                  style={{
-                    width: "370px",
-                    height: "48px",
-                    padding: "5px",
-                    marginBottom: "10px",
-                    fontSize: "16px",
-                    borderRadius: "10px",
-                    border: "1px solid #ccc",
-                    background: "rgba(250,250,250,255)",
-                    color: "Grey/500",
-                    fontWeight: "500",
-                    font: "Roboto",
-                  }}
                   placeholder="New password"
                 />
 
                 <input
+                  className="confirm-password"
                   type="password"
-                  style={{
-                    width: "370px",
-                    height: "48px",
-                    padding: "5px",
-                    marginBottom: "6px",
-                    fontSize: "16px",
-                    borderRadius: "10px",
-                    border: "1px solid #ccc",
-                    background: "rgba(250,250,250,255)",
-                    marginTop: "8px",
-                    color: "Grey/500",
-                    fontWeight: "500",
-                    font: "Roboto",
-                  }}
                   placeholder="confirm password"
                 />
 
-                <p
-                  style={{
-                    //display: "flex",
-                    //alignItems: "center",
-                    color: "red",
-                    font: "roboto",
-                    fontSize: "14px",
-                    fontWeight: "500",
-                    marginTop: "2px",
-                  }}
-                >
-                  Both password must me match!
-                </p>
-
                 <button
+                  className="reset-button"
                   style={{
                     background: "#004679",
                     color: "white",
@@ -1124,232 +425,40 @@ const LoginForm = () => {
             </div>
           </div>
         </div>
-        <div style={{ flex: 0.5, display: "flex" }}>
+        <div className="right-div">
           <img src={image} style={{ width: "832px" }} alt="Image" />
         </div>
       </div>
     );
   } else if (isResetPassword) {
     return (
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          width: "100%",
-          height: "100vh",
-        }}
-      >
-        <div
-          style={{
-            flex: 0.5,
-            display: "flex",
-            // justifyContent: "center",
-            flexDirection: "column",
-            alignItems: "center",
-            position: "relative",
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              flexDirection: "column",
-              alignItems: "center",
-              marginTop: "20px",
-            }}
-          ></div>
-          <div
-            style={{
-              width: "381px",
-              height: "448px",
-              position: "relative",
-              marginTop: "80px",
-            }}
-          >
-            <h2
-              style={{
-                marginTop: "0px",
-                font: "Rubik",
-                fontWeight: "700",
-                fontSize: "24px",
-                color: "#093A5E",
-                width: "381px",
-                height: "30px",
-                textAlign: "center",
-              }}
-            >
-              Enter Verification Code
-            </h2>
-            <p
-              style={{
-                width: "381px",
-                height: "24px",
-                textAlign: "center",
-                color: "Grey/500",
-                font: "Roboto",
-                fontWeight: "400",
-                fontSize: "16px",
-              }}
-            >
+      <div className="main-container">
+        <div className="left-container">
+          <div className="verification-page">
+            <h2 className="heading-verification">Enter Verification Code</h2>
+            <p className="sub-heading-verification">
               We've send you on John****@gmail.com
             </p>
-            <div
-              style={{
-                width: "381px",
-                height: "140px",
-                position: "absolute",
-                top: "50%",
-                left: "50%",
-                transform: "translate(-50%, -50%)",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "space-between",
-              }}
-            >
-              <div
-                style={{
-                  width: "381px",
-                  height: "60px",
-                  position: "absolute",
-                  top: "0%",
-
-                  //transform: "translate(-50%, -50%)",
-                  display: "flex",
-                  flexDirection: "row",
-                  justifyContent: "space-between",
-                }}
-              >
-                <input
-                  type="number"
-                  style={{
-                    width: "75px",
-                    height: "48px",
-                    padding: "2px, 16px, 2px, 16px",
-                    marginBottom: "10px",
-                    fontSize: "20px",
-                    textAlign: "center",
-                    borderRadius: "10px",
-                    border: "none",
-                    background: "rgba(250,250,250,255)",
-                  }}
-                  placeholder="0"
-                />
-                <input
-                  type="number"
-                  style={{
-                    width: "75px",
-                    height: "48px",
-                    padding: "2px, 16px, 2px, 16px",
-                    marginBottom: "10px",
-                    marginLeft: "10px",
-                    fontSize: "20px",
-                    textAlign: "center",
-                    borderRadius: "10px",
-                    border: "none",
-                    background: "rgba(250,250,250,255)",
-                  }}
-                  placeholder="0"
-                />
-                <input
-                  type="number"
-                  style={{
-                    width: "75px",
-                    height: "48px",
-                    padding: "2px, 16px, 2px, 16px",
-                    marginBottom: "10px",
-                    marginLeft: "10px",
-                    fontSize: "20px",
-                    textAlign: "center",
-                    borderRadius: "10px",
-                    border: "none",
-                    background: "rgba(250,250,250,255)",
-                  }}
-                  placeholder="0"
-                />
-                <input
-                  type="number"
-                  style={{
-                    width: "75px",
-                    height: "48px",
-                    padding: "2px, 16px, 2px, 16px",
-                    marginBottom: "10px",
-                    marginLeft: "10px",
-                    textAlign: "center",
-                    fontSize: "20px",
-                    borderRadius: "10px",
-                    border: "none",
-                    background: "rgba(250,250,250,255)",
-                  }}
-                  placeholder="0"
-                />
+            <div className="code-container">
+              <div className="input-boxes">
+                <input className="input-box1" type="number" placeholder="0" />
+                <input className="input-box2" type="number" placeholder="0" />
+                <input className="input-box3" type="number" placeholder="0" />
+                <input className="input-box4" type="number" placeholder="0" />
               </div>
-              <div
-                style={{
-                  marginTop: "100px",
-                }}
-              >
-                <button
-                  style={{
-                    background: "#004679",
-                    color: "#FFFFFF",
-                    width: "383px",
-                    height: "44px",
-                    border: "none",
-                    cursor: "pointer",
-                    fontSize: "14px",
-                    font: "roboto",
-                    fontweight: "500",
-                    borderRadius: "4px",
-                    marginTop: "20px",
-                  }}
-                >
-                  Continue
-                </button>
+              <div className="continue-button-container">
+                <button className="continue-button">Continue</button>
               </div>
             </div>
-            <div
-              style={{
-                position: "relative",
-                width: "381px",
-                height: "80px",
-                bottom: "40px",
-                top: "270px",
-                left: "50%",
-                transform: "translateX(-50%)",
-              }}
-            >
-              <div
-                style={{
-                  width: "381px",
-                  height: "20px",
-                  textAlign: "center",
-                  color: "Grey/600",
-                  fontweight: "500",
-                  font: "roboto",
-                  fontsize: "14px",
-                }}
-              >
+            <div className="last-div-verification">
+              <div className="last-1-verif">
                 Did not recieve the email? Check your spam filter, or
               </div>
-              <button
-                style={{
-                  background: "white",
-                  color: "#1D709F",
-                  width: "381px",
-                  height: "48px",
-                  border: "3px solid #1D709F",
-                  cursor: "pointer",
-                  fontSize: "18px",
-                  borderRadius: "5px",
-                  marginTop: "16px",
-                }}
-              >
-                Resend Code
-              </button>
+              <button className="resend-button">Resend Code</button>
             </div>
           </div>
         </div>
-        <div style={{ flex: 0.5, display: "flex" }}>
+        <div className="right-div">
           <img src={image} style={{ width: "832px" }} alt="Image" />
         </div>
       </div>
