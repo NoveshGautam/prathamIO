@@ -6,7 +6,7 @@ import * as Yup from "yup";
 import frame2image from "./images/frame2.jpg.png";
 
 const LoginForm = () => {
-    // State for controlling different UI views
+  // State for controlling different UI views
   const [isSignInClicked, setIsSignInClicked] = useState(false);
   const [isSignUpClicked, setIsSignUpClicked] = useState(false);
   const [isForgotPasswordClicked, setIsForgotPasswordClicked] = useState(false);
@@ -63,31 +63,32 @@ const LoginForm = () => {
     email: Yup.string()
       .required("Email is required")
       .matches(
-        /^[a-zA-Z_]*$/,
-        "Username can only contain letters and underscores"
+        /^[a-zA-Z_@.]*$/,
+        "Username can only contain letters, underscores, and @"
       ),
+
     password: Yup.string()
       .required("Password is required")
-      .matches(
-        /^(?=.*[A-Z])/,
-        "Password must contain at least one uppercase letter"
-      ),
-    firstName: Yup.string().required("first Name is required"),
-    lastName: Yup.string().required("last Name is required"),
+      .min(8, "Password must be at least 8 characters")
+      .max(20, "Password can't be more than 20 characters"),
+
+    firstName: Yup.string().required("First Name is required"),
+    lastName: Yup.string().required("Last Name is required"),
   });
 
   // Initial values for Formik form
+
   const initialValues = {
-    email: "",
-    password: "",
     firstName: "",
     lastName: "",
+    email: "",
+    password: "",
   };
   const onSubmit = (values) => {
     console.log(values);
   };
- 
-    // Render different UI components based on state
+
+  // Render different UI components based on state
   if (
     !isSignInClicked &&
     !isSignUpClicked &&
@@ -99,30 +100,34 @@ const LoginForm = () => {
     return (
       // JSX for the default view
       <div className="main-container">
+        {/*left container */}
         <div className="left-container">
-          <img
-            src={frame2image}
-            style={{ width: "428px", height: "40px" }}
-            alt="Image"
-          />
-
+          {/*image */}
+          <div className=" default-page-img">
+            <img src={frame2image} alt="Image" />
+          </div>
+          {/* Mini Container */}
           <div className="mini-container">
+            {/* Heading */}
             <div className="heading-container">
               <h2 className="heading">Hi, Welcome Back</h2>
             </div>
+            {/* Sign In Button */}
             <div className="button-div">
-              <button onClick={handleSignInClick}>Sign In</button>
+              <button onClick={handleSignInClick}>Sign in</button>
             </div>
+            {/* Sign Up Prompt */}
             <div className="last">
-              <div className="last-1">Don't have an account?</div>
+              <div className="last-1">Do not have an account?</div>
               <div className="last-2" onClick={handleSignUpClick}>
                 Sign Up
               </div>
             </div>
           </div>
         </div>
+        {/* Right Container */}
         <div className="right-div">
-          <img src={image} style={{ width: "832px" }} alt="Image" />
+          <img src={image} alt="Image" />
         </div>
       </div>
     );
@@ -135,54 +140,61 @@ const LoginForm = () => {
         validationSchema={validationSchema}
       >
         <Form>
+          {/* Main container */}
           <div className="main-container">
+            {/* Left container */}
             <div className="left-container">
-              <img
-                src={frame2image}
-                style={{
-                  width: "350px",
-                  height: "40px",
-                  background: "white",
-                  marginTop: "-10px",
-                }}
-                alt="Image"
-              />
-
+              {/* Sign-in page image */}
+              <div className="signin-page-img">
+                <img src={frame2image} alt="Image" />
+              </div>
+              {/* Login page container */}
               <div className="login-page-container">
+                {/* Login page mini */}
                 <div className="login-page-mini">
+                  {/* Sign-in heading */}
                   <h2 className="heading-login-page">Sign In</h2>
+                  {/* Sub-heading */}
                   <p className="sub-heading-login-page">
                     Enter your credentials to continue
                   </p>
 
+                  {/* Input fields */}
                   <div className="input-field-login">
+                    {/* Email field */}
                     <Field
                       className="email-login"
                       type="email"
                       name="email"
                       placeholder="Email Address"
                     />
+                    {/* Error message for email */}
                     <ErrorMessage
                       className="error-message"
                       name="email"
                       component="div"
                     />
+                    {/* Password field */}
                     <Field
                       className="password-login"
                       type="password"
                       name="password"
                       placeholder="Password"
                     />
+                    {/* Error message for password */}
                     <ErrorMessage
                       className="error-message"
                       name="password"
                       component="div"
                     />
+                    {/* Security options */}
                     <div className="security">
+                      {/* Checkbox for "Remember me" */}
                       <label className="checkbox">
                         <input type="checkbox" />
                         Remember me
                       </label>
+                      {/* "Forgot Password?" link */}
                       <div
                         className="forgot-password"
                         onClick={handleForgotPasswordClick}
@@ -190,10 +202,14 @@ const LoginForm = () => {
                         Forgot Password?
                       </div>
                     </div>
+                    {/* Sign In Button */}
                     <button>Sign In</button>
                   </div>
+                  {/* Last section */}
                   <div className="main-last-login">
-                    <div className="last-1-login">Don't have a account?</div>
+                    {/* "Don't have an account?" */}
+                    <div className="last-1-login">Don't have an account?</div>
+                    {/* "Sign Up" link */}
                     <div className="last-2-login" onClick={handleSignUpClick}>
                       Sign Up
                     </div>
@@ -201,8 +217,10 @@ const LoginForm = () => {
                 </div>
               </div>
             </div>
+            {/* Right container */}
             <div className="right-div">
-              <img src={image} style={{ width: "832px" }} alt="Image" />
+              {/* Right container image */}
+              <img src={image} alt="Image" />
             </div>
           </div>
         </Form>
@@ -213,84 +231,97 @@ const LoginForm = () => {
       // JSX for the Formik sign-up form
       <Formik initialValues={initialValues} validationSchema={validationSchema}>
         <Form>
+          {/* Main container */}
           <div className="main-container">
+            {/* Left container */}
             <div className="left-container">
-              <img
-                src={frame2image}
-                style={{
-                  width: "350px",
-                  height: "40px",
-                  background: "white",
-                  marginTop: "-10px",
-                }}
-                alt="Image"
-              />
+              {/* Signup page image */}
+              <div className="signup-page-img">
+                <img src={frame2image} alt="Image" />
+              </div>
+              {/* Signup page */}
               <div className="signup-page">
+                {/* Signup page mini */}
                 <div className="signup-page-mini">
+                  {/* Signup heading */}
                   <h2 className="heading-signup-page">Sign Up</h2>
+                  {/* Sub-heading */}
                   <p className="sub-heading-signup-page">
                     Enter your credentials to continue
                   </p>
+                  {/* Input fields */}
                   <div className="inputfield-signup">
                     <div>
+                      {/* First Name field */}
                       <Field
                         className="firstname-signup"
-                        type="FirstName"
-                        name="FirstName"
+                        type="text"
+                        name="firstName"
                         placeholder="First Name"
-                      />
+                      />{/* Error message for first name*/}
                       <ErrorMessage
                         className="error-message"
                         name="firstName"
                         component="div"
                       />
+                      {/* Last Name field */}
                       <Field
                         className="lastname-signup"
                         type="lastName"
                         name="lastName"
                         placeholder="Last Name"
-                      />
+                      />{/* Error message for last name*/}
                       <ErrorMessage
                         className="error-message"
                         name="lastName"
                         component="div"
                       />
                     </div>
+                    {/* Email field */}
                     <Field
                       className="email-signup"
                       type="email"
-                      name="email"
+                      name="email" // Make sure this matches your initial values keys
                       placeholder="Email Address"
                     />
+
+                    {/* Error message for email */}
                     <ErrorMessage
                       className="error-message"
                       name="email"
                       component="div"
                     />
-
+                    {/* Password field */}
                     <Field
                       className="password-signup"
                       type="password"
                       name="password"
                       placeholder="Password"
                     />
+                    {/* Error message for password */}
                     <ErrorMessage
                       className="error-message"
                       name="password"
                       component="div"
                     />
+                    {/* Security options */}
                     <div className="security">
+                      {/* Checkbox for "Remember me" */}
                       <label className="checkbox">
                         <input type="checkbox" />
                         Remember me
                       </label>
                     </div>
+                    {/* Sign Up Button */}
                     <button onClick={handleSignUpClick}>Sign up</button>
                   </div>
+                  {/* Last section */}
                   <div className="last-signup">
+                    {/* "Already have an account?" */}
                     <div className="last-1-signup">
                       Already have an account?
                     </div>
+                    {/* "Sign In" link */}
                     <div className="last-2-signup" onClick={handleSignInClick}>
                       Sign In
                     </div>
@@ -298,8 +329,10 @@ const LoginForm = () => {
                 </div>
               </div>
             </div>
+            {/* Right container */}
             <div className="right-div">
-              <img src={image} style={{ width: "832px" }} alt="Image" />
+              {/* Right container image */}
+              <img src={image} alt="Image" />
             </div>
           </div>
         </Form>
@@ -307,20 +340,11 @@ const LoginForm = () => {
     );
   } else if (isForgotPasswordClicked) {
     return (
-      
       <div className="main-container">
         <div className="left-container">
-          <img
-            src={frame2image}
-            style={{
-              width: "350px",
-              height: "45px",
-              background: "white",
-              margintop: "10px",
-            }}
-            alt="Image"
-          />
-
+          <div className="forgot-page-img">
+            <img src={frame2image} alt="Image" />
+          </div>
           <div className="forgot-password-page">
             <h2 className="heading-forgot-page">Forgot Password?</h2>
             <p className="sub-heading-forgot-page">
@@ -347,7 +371,7 @@ const LoginForm = () => {
           </div>
         </div>
         <div className="right-div">
-          <img src={image} style={{ width: "832px" }} alt="Image" />
+          <img src={image} alt="Image" />
         </div>
       </div>
     );
@@ -371,7 +395,7 @@ const LoginForm = () => {
           </div>
         </div>
         <div className="right-div">
-          <img src={image} style={{ width: "832px" }} alt="Image" />
+          <img src={image} alt="Image" />
         </div>
       </div>
     );
@@ -379,9 +403,7 @@ const LoginForm = () => {
     return (
       <div className="main-container">
         <div className="left-container">
-          <div
-            className="reset-page"
-          >
+          <div className="reset-page">
             <div className="reset-mini-div">
               <h2 className="heading-reset-page">Reset Password</h2>
               <p className="sub-heading-reset-page">
@@ -401,24 +423,7 @@ const LoginForm = () => {
                   placeholder="confirm password"
                 />
 
-                <button
-                  className="reset-button"
-                  style={{
-                    background: "#004679",
-                    color: "white",
-                    width: "100%",
-                    height: "44px",
-                    border: "none",
-                    cursor: "pointer",
-                    fontSize: "18px",
-                    borderRadius: "4px",
-                    marginTop: "30px",
-                    font: "roboto",
-                    fontSize: "14px",
-                    fontWeight: "500",
-                  }}
-                  onClick={handleResetClick}
-                >
+                <button className="reset-button" onClick={handleResetClick}>
                   Reset Password
                 </button>
               </div>
@@ -426,7 +431,7 @@ const LoginForm = () => {
           </div>
         </div>
         <div className="right-div">
-          <img src={image} style={{ width: "832px" }} alt="Image" />
+          <img src={image} alt="Image" />
         </div>
       </div>
     );
@@ -459,7 +464,7 @@ const LoginForm = () => {
           </div>
         </div>
         <div className="right-div">
-          <img src={image} style={{ width: "832px" }} alt="Image" />
+          <img src={image} alt="Image" />
         </div>
       </div>
     );

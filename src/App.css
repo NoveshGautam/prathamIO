@@ -38,7 +38,7 @@
 }
 
 .button-div {
-  width: 428px;
+  width: 434px;
   height: 44px;
   position: absolute;
   top: 45%;
@@ -51,7 +51,7 @@
 button {
   background: #004679;
   color: white;
-  width: 428px;
+  width: 434px;
   height: 44px;
   border-radius: 4px;
   border: none;
@@ -85,7 +85,7 @@ button {
   height: 35px;
   text-align: center;
   color: #09548c;
-  font-family: roboto;
+  font: roboto;
   font-size: 16px;
   font-weight: 500;
 }
@@ -127,7 +127,7 @@ button {
   font-weight: 400;
 }
 .input-field-login {
-  width: 428px;
+  width: 432px;
   height: 290px;
   position: absolute;
   top: 50%;
@@ -141,7 +141,7 @@ button {
   width: 400px;
   height: 30px;
   padding: 16px;
-  margin-bottom: 1px;
+  margin-bottom: 0px;
   font-size: 16px;
   font-weight: 400;
   border-radius: 12px;
@@ -151,7 +151,9 @@ button {
 .error-message {
   color: red;
   font-size: 14px;
-  margin-top: 5px;
+  margin-top: 0px;
+  margin-bottom: 10px;
+  flex-direction: column;
 }
 .password-login {
   width: 400px;
@@ -168,6 +170,7 @@ button {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 20px;
 }
 .checkbox {
   display: flex;
@@ -218,7 +221,8 @@ button {
 }
 .signup-page-mini {
   width: 428px;
-  height: 581px;
+  height: 601px;
+  margin-top: 60px;
   position: relative;
 }
 .heading-signup-page {
@@ -241,22 +245,23 @@ button {
 }
 .inputfield-signup {
   width: 428px;
-  height: 427px;
+  height: 400px;
   position: absolute;
-  top: 45%;
+  top: 49%;
   left: 50%;
   transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
+
 .firstname-signup {
-  width: 170px;
-  height: 45px;
+  width: 160px;
+  height: 44px;
   padding: 5px;
-  margin-top: 50px;
+  margin-top: 0px;
   margin-bottom: 0px;
-  margin-right: 60px;
+  margin-right: 70px;
   font: roboto;
   font-weight: 500;
   font-size: 16px;
@@ -266,10 +271,10 @@ button {
 }
 
 .lastname-signup {
-  width: 170px;
-  height: 45px;
+  width: 160px;
+  height: 44px;
   padding: 5px;
-  margin-bottom: 5px;
+  margin-bottom: 0px;
   font-size: 16px;
   font: roboto;
   border-radius: 10px;
@@ -277,6 +282,7 @@ button {
   color: Grey/500;
   background: rgba(250, 250, 250, 255);
 }
+
 .email-signup {
   width: 412px;
   height: 45px;
@@ -479,7 +485,6 @@ button {
   width: 381px;
   height: 374px;
   position: relative;
-
 }
 .heading-reset-page {
   margin-top: 0px;
@@ -688,4 +693,35 @@ button {
   font-size: 18px;
   border-radius: 5px;
   margin-top: 16px;
+}
+
+.default-page-img {
+  width: 428px;
+  height: 40px;
+}
+.right-div img {
+  width: 832px;
+}
+
+.signin-page-img {
+  width: 350px;
+  height: 40px;
+  background: white;
+  margin-top: -10px;
+  margin-right: 90px;
+}
+.signup-page-img {
+  width: 350px;
+  height: 40px;
+  background: white;
+  margin-top: -10px;
+  margin-right: 90px;
+}
+
+.forgot-page-img {
+  width: 350px;
+  height: 45px;
+  background: white;
+  margin-top: 10px;
+  margin-right: 90px;
 }
