@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect  } from "react";
 import "./App.css";
 import image from "./images/Frame.jpg.png";
 import { Formik, Form, Field, ErrorMessage } from "formik";
@@ -14,6 +14,14 @@ const LoginForm = () => {
   const [isBackToSignIn, setIsBackToSignIn] = useState(false);
   const [isResetPassword, setIsResetPassword] = useState(false);
 
+  useEffect(() => {
+    const storedSignInState = localStorage.getItem("isSignInClicked");
+    const storedSignUpState = localStorage.getItem("isSignUpClicked");
+
+    setIsSignInClicked(storedSignInState === "true");
+    setIsSignUpClicked(storedSignUpState === "true");
+  }, []);
+
   // Handlers for different UI transitions
   const handleSignInClick = () => {
     setIsSignInClicked(true);
@@ -22,6 +30,8 @@ const LoginForm = () => {
     setIsMailSent(false);
     setIsBackToSignIn(false);
     setIsResetPassword(false);
+    localStorage.setItem("isSignInClicked", "true");
+    localStorage.setItem("isSignUpClicked", "false");
   };
 
   const handleSignUpClick = () => {
@@ -31,6 +41,8 @@ const LoginForm = () => {
     setIsMailSent(false);
     setIsBackToSignIn(false);
     setIsResetPassword(false);
+    localStorage.setItem("isSignInClicked", "false");
+    localStorage.setItem("isSignUpClicked", "true");
   };
   const handleForgotPasswordClick = () => {
     setIsSignInClicked(false);
@@ -59,23 +71,34 @@ const LoginForm = () => {
     setIsResetPassword(true);
   };
   // Validation schema for Formik
-  const validationSchema = Yup.object().shape({
+  const signInValidationSchema = Yup.object().shape({
     email: Yup.string()
       .required("Email is required")
       .matches(
         /^[a-zA-Z_@.]*$/,
         "Username can only contain letters, underscores, and @"
       ),
-
     password: Yup.string()
       .required("Password is required")
       .min(8, "Password must be at least 8 characters")
       .max(20, "Password can't be more than 20 characters"),
-
+  });
+  
+  const signUpValidationSchema = Yup.object().shape({
     firstName: Yup.string().required("First Name is required"),
     lastName: Yup.string().required("Last Name is required"),
+    Email: Yup.string()
+      .required("Email is required")
+      .matches(
+        /^[a-zA-Z_@.]*$/,
+        "Username can only contain letters, underscores, and @"
+      ),
+    Password: Yup.string()
+      .required("Password is required")
+      .min(8, "Password must be at least 8 characters")
+      .max(20, "Password can't be more than 20 characters"),
   });
-
+  
   // Initial values for Formik form
 
   const initialValues = {
@@ -83,6 +106,8 @@ const LoginForm = () => {
     lastName: "",
     email: "",
     password: "",
+    Email:"",
+    Password:""
   };
   const onSubmit = (values) => {
     console.log(values);
@@ -137,7 +162,7 @@ const LoginForm = () => {
       <Formik
         initialValues={initialValues}
         onSubmit={onSubmit}
-        validationSchema={validationSchema}
+        validationSchema={signInValidationSchema}
       >
         <Form>
           {/* Main container */}
@@ -229,7 +254,7 @@ const LoginForm = () => {
   } else if (isSignUpClicked) {
     return (
       // JSX for the Formik sign-up form
-      <Formik initialValues={initialValues} validationSchema={validationSchema}>
+      <Formik initialValues={initialValues} validationSchema={signUpValidationSchema}>
         <Form>
           {/* Main container */}
           <div className="main-container">
@@ -280,28 +305,28 @@ const LoginForm = () => {
                     {/* Email field */}
                     <Field
                       className="email-signup"
-                      type="email"
-                      name="email" // Make sure this matches your initial values keys
+                      type="Email"
+                      name="Email" 
                       placeholder="Email Address"
                     />
 
                     {/* Error message for email */}
                     <ErrorMessage
                       className="error-message"
-                      name="email"
+                      name="Email"
                       component="div"
                     />
                     {/* Password field */}
                     <Field
                       className="password-signup"
-                      type="password"
-                      name="password"
+                      type="Password"
+                      name="Password"
                       placeholder="Password"
                     />
                     {/* Error message for password */}
                     <ErrorMessage
                       className="error-message"
-                      name="password"
+                      name="Password"
                       component="div"
                     />
                     {/* Security options */}
