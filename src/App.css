@@ -16,6 +16,7 @@
   width: 428px;
   height: 444px;
   position: relative;
+  background-color: green;
 }
 .heading-container {
   width: 428px;
@@ -68,6 +69,7 @@ button {
   left: 50%;
   top: 70%;
   transform: translateX(-50%);
+  
 }
 .last-1 {
   width: 428px;
@@ -77,17 +79,20 @@ button {
   font-size: 14px;
   font: Roboto;
   font-weight: 500;
+  
 }
 .last-2 {
   text-decoration: underline;
   cursor: pointer;
   width: 428px;
   height: 35px;
+  margin-left: 180px;
   text-align: center;
   color: #09548c;
   font: roboto;
   font-size: 16px;
   font-weight: 500;
+  
 }
 
 .right-div {
@@ -206,6 +211,7 @@ button {
   cursor: pointer;
   width: 428px;
   height: 20px;
+  margin-left: 185px;
   text-align: center;
   color: #09548c;
   font-size: 16px;
@@ -329,6 +335,7 @@ button {
   font-weight: 500;
   font: roboto;
   cursor: pointer;
+  margin-left: 190px;
   width: 428px;
   height: 20px;
   text-align: center;
@@ -418,6 +425,7 @@ button {
   cursor: pointer;
   width: 428px;
   height: 20px;
+  margin-left: 190px;
   text-align: center;
   color: #09548c;
   font-size: 16px;
@@ -724,4 +732,19 @@ button {
   background: white;
   margin-top: 10px;
   margin-right: 90px;
+}
+
+
+.App-header {
+  display: flex;
+  list-style: none;
+  padding: 0;
+}
+
+.App-header li {
+  margin-right: 20px;
+}
+
+.App-header li:last-child {
+  margin-right: 0;
 }

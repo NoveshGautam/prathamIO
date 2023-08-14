@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./app.css";
-import image from "./images/Frame.jpg.png";
+import "../App.css";
+import image from "../images/Frame.jpg.png";
 
 const MailSent = () => {
   return (
@@ -13,9 +13,9 @@ const MailSent = () => {
             We have sent password recovery instructions to your email.
           </p>
           <div className="button-div-mailsent">
-            <Link to="/signin" className="button-mailsent">
+            <button className="button-mailsent">
               Back to Sign In
-            </Link>
+            </button>
           </div>
         </div>
       </div>

@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import frame2image from "./images/frame2.jpg.png";
-import image from "./images/Frame.jpg.png";
-import "./app.css";
+import frame2image from "../images/frame2.jpg.png";
+import image from "../images/Frame.jpg.png";
+import "../App.css";
 
 const ForgotPassword = () => {
   const handleSendButtonClick = () => {
