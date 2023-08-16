@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import image from "../images/Frame.jpg.png";
-import frame2image from "../images/frame2.jpg.png";
+import image from "../images/Frame.png";
+import frame2image from "../images/frame2.png";
 import "../App.css";
 
 const DefaultView = () => {

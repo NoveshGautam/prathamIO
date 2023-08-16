@@ -2,9 +2,9 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { Link } from "react-router-dom";
 import * as Yup from "yup";
-import frame2image from "../images/frame2.jpg.png";
+import frame2image from "../images/frame2.png";
 import "../App.css";
-import image from "../images/Frame.jpg.png";
+import image from "../images/Frame.png";
 
 const SignIn = () => {
   // Validation schema for Formik

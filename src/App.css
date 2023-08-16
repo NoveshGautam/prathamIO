@@ -16,7 +16,6 @@
   width: 428px;
   height: 444px;
   position: relative;
-
 }
 .heading-container {
   width: 428px;
@@ -69,7 +68,6 @@ button {
   left: 50%;
   top: 70%;
   transform: translateX(-50%);
-  
 }
 .last-1 {
   width: 428px;
@@ -79,7 +77,6 @@ button {
   font-size: 14px;
   font: Roboto;
   font-weight: 500;
-  
 }
 .last-2 {
   text-decoration: underline;
@@ -92,7 +89,6 @@ button {
   font: roboto;
   font-size: 16px;
   font-weight: 500;
-  
 }
 
 .right-div {
@@ -273,6 +269,7 @@ button {
   font-size: 16px;
   border-radius: 10px;
   border: 1px solid #ccc;
+  background: rgba(250, 250, 250, 255);
   color: Grey/500;
 }
 
@@ -733,7 +730,6 @@ button {
   margin-top: 10px;
   margin-right: 90px;
 }
-
 
 .App-header {
   display: flex;
