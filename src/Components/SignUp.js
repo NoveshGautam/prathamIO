@@ -131,9 +131,7 @@ const SignUp = () => {
                 {/* Last section */}
                 <div className="last-signup">
                   {/* "Already have an account?" */}
-                  <div className="last-1-signup">
-                    Already have an account?
-                  </div>
+                  <div className="last-1-signup">Already have an account?</div>
                   {/* "Sign In" link */}
                   <Link to="/signin" className="last-2-signup">
                     Sign In

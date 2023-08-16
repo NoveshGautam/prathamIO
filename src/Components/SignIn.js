@@ -2,7 +2,7 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { Link } from "react-router-dom";
 import * as Yup from "yup";
-import frame2image from "../images/frame2.jpg.png"
+import frame2image from "../images/frame2.jpg.png";
 import "../App.css";
 import image from "../images/Frame.jpg.png";
 
@@ -94,10 +94,7 @@ const SignIn = () => {
                       Remember me
                     </label>
                     {/* "Forgot Password?" link */}
-                    <Link
-                      to="/forgotpassword"
-                      className="forgot-password"
-                    >
+                    <Link to="/forgotpassword" className="forgot-password">
                       Forgot Password?
                     </Link>
                   </div>
@@ -107,9 +104,7 @@ const SignIn = () => {
                 {/* Last section */}
                 <div className="main-last-login">
                   {/* "Don't have an account?" */}
-                  <div className="last-1-login">
-                    Don't have an account?
-                  </div>
+                  <div className="last-1-login">Don't have an account?</div>
                   {/* "Sign Up" link */}
                   <Link to="/signup" className="last-2-login">
                     Sign Up

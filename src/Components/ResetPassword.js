@@ -26,8 +26,9 @@ const ResetPassword = () => {
                 type="password"
                 placeholder="Confirm password"
               />
-
-              <button className="reset-button">Reset Password</button>
+              <Link to="/verification">
+                <button className="reset-button"> Reset Password</button>
+              </Link>
             </div>
           </div>
         </div>

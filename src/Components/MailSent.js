@@ -13,9 +13,9 @@ const MailSent = () => {
             We have sent password recovery instructions to your email.
           </p>
           <div className="button-div-mailsent">
-            <button className="button-mailsent">
-              Back to Sign In
-            </button>
+            <Link to="/resetPassword">
+              <button className="button-mailsent"> Back to Sign In</button>
+            </Link>
           </div>
         </div>
       </div>
