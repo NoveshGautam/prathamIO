@@ -7,6 +7,7 @@ import ForgotPassword from "./Components/ForgotPassword";
 import MailSent from "./Components/MailSent";
 import ResetPassword from "./Components/ResetPassword";
 import Verification from "./Components/Verification";
+import HomePage from "./Components/HomePage";
 import "./App.css";
 
 /* The main application component that handles routing and renders different views.*/
@@ -34,6 +35,7 @@ const App = () => {
 
         {/* Route for user verification */}
         <Route path="/verification" element={<Verification />} />
+        <Route path="/HomePage" element={<HomePage />} />
       </Routes>
     </Router>
   );

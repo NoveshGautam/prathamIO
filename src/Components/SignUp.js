@@ -15,13 +15,14 @@ const SignUp = () => {
       .required("Email is required")
       .matches(
         /^[a-zA-Z_@.]*$/,
-        "Username can only contain letters, underscores, and @"
+        "username can only contain letters, underscores, and numbers"
       ),
     password: Yup.string()
       .required("Password is required")
       .min(8, "Password must be at least 8 characters")
       .max(20, "Password can't be more than 20 characters"),
   });
+
 
   // Initial values for Formik form
   const initialValues = {

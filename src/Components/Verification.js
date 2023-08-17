@@ -1,5 +1,6 @@
 import React from "react";
 import image from "../images/Frame.png";
+import { Link } from "react-router-dom";
 import "../App.css";
 
 /**
@@ -28,7 +29,9 @@ const Verification = () => {
             </div>
             {/* Continue Button */}
             <div className="continue-button-container">
-              <button className="continue-button">Continue</button>
+              <Link to="/HomePage">
+                <button className="continue-button"> Continue</button>
+              </Link>
             </div>
           </div>
           {/* Resend Code Option */}
