@@ -828,10 +828,11 @@ button {
   width: 220px;
   height: 360px;
   margin-top: 14px;
+  
 }
 .home-page-container2 {
   width: 1385px;
-  height: 600px;
+  height: 627px;
   margin-top: -380px;
   margin-left: 260.51px;
   border-radius: 24px;
@@ -843,7 +844,7 @@ button {
 }
 .sub-container2 {
   width: 1340px;
-  height: 560px;
+  height: 590px;
   margin-left: 20px;
   margin-top: 17px;
 }
@@ -859,6 +860,7 @@ button {
   font-weight: 500;
   font: Poppins;
   color: #4f4f4f;
+  
 }
 
 .mini-2 {
@@ -904,10 +906,12 @@ button {
   font-weight: 500;
   font: Roboto Flex;
   display: flex;
+  margin-left: 0px;
   justify-content: left;
   align-items: center;
   background-color: #ffffff80;
   border-radius: 12px;
+  
 }
 .school-phone {
   width: 228px;
@@ -926,24 +930,25 @@ button {
 }
 .About-school {
   width: 1340px;
-  height: 400px;
+  height: 434px;
   margin-top: 25px;
 }
-.about-school-div-1 {
+.About-school-div-1 {
   width: 1340px;
-  height: 190px;
-}
+  height: 210px;
+
+ }
 .about-school-div-2 {
   width: 1340px;
-  height: 190px;
+  height: 210px;
   margin-top: 20px;
+ 
 }
 
 .test-center {
   width: 400px;
-  height: 190px;
+  height: 210px;
   background: #ffffff;
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -951,10 +956,9 @@ button {
 }
 .student-portal {
   width: 400px;
-  height: 190px;
+  height: 210px;
   background: #ffffff;
-
-  margin-top: -190px;
+   margin-top: -210px;
   margin-left: 470px;
   display: flex;
   justify-content: center;
@@ -964,10 +968,9 @@ button {
 
 .teachers {
   width: 400px;
-  height: 190px;
+  height: 210px;
   background: #ffffff;
-
-  margin-top: -190px;
+  margin-top: -210px;
   margin-left: 940px;
   display: flex;
   justify-content: center;
@@ -977,9 +980,8 @@ button {
 
 .analysis {
   width: 400px;
-  height: 190px;
+  height: 210px;
   background: #ffffff;
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -987,11 +989,9 @@ button {
 }
 .admission {
   width: 400px;
-  height: 190px;
-
+  height: 210px;
   background: #ffffff;
-
-  margin-top: -190px;
+  margin-top: -210px;
   margin-left: 470px;
   display: flex;
   justify-content: center;
@@ -1000,9 +1000,9 @@ button {
 }
 .quick-link {
   width: 400px;
-  height: 190px;
+  height: 210px;
   background: rgba(233, 233, 254, 255);
-  margin-top: -190px;
+  margin-top: -210px;
   margin-left: 940px;
   display: flex;
   justify-content: center;
@@ -1158,7 +1158,6 @@ button {
 .settings-navigation {
   width: 212px;
   height: 52px;
-
   margin-top: 10px;
   border-radius: 12px;
   display: flex;
@@ -1168,7 +1167,7 @@ button {
 .navigation-font {
   width: 114px;
   height: 20px;
-  margin-left: 50px;
+  margin-left: 25px;
   color: #c0c3cb;
   font: Poppins;
   font-weight: 400;
@@ -1182,5 +1181,5 @@ button {
   font: Poppins;
   font-weight: 600;
   font-size: 18px;
-  margin-left: 50px;
+  margin-left: 25px;
 }

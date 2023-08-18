@@ -42,11 +42,11 @@ const HomePage = () => {
           </div>
           <div className="test-center-navigation">
             <img src={center} alt="Image" />
-            <div className="navigation-font">Tests center</div>
+            <div className="navigation-font">Tests Center</div>
           </div>
           <div className="student-portal-navigation">
             <img src={portal} alt="Image" />
-            <div className="navigation-font">Student portal</div>
+            <div className="navigation-font">Student Portal</div>
           </div>
           <div className="analysis-navigation">
             <img src={assessment} alt="Image" />
