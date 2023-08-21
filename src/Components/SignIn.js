@@ -106,6 +106,8 @@ import { Link } from "react-router-dom";
 import { InputText } from "primereact/inputtext";
 import { Password } from "primereact/password";
 import frame2image from "../images/frame2.png";
+import "primereact/resources/themes/lara-light-indigo/theme.css";
+import "primereact/resources/primereact.min.css";           
 import "../App.css";
 import image from "../images/Frame.png";
 
