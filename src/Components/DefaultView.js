@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import image from "../images/Frame.png";
-import ButtonSection from "../ButtonSection";
 import frame2image from "../images/frame2.png";
 import "../App.css";
 
@@ -23,8 +22,8 @@ const DefaultView = () => {
           {/* Sign In Button */}
           <div className="button-div">
           <Link to="/signin">
-            <ButtonSection/>
-                         </Link>
+              <button>Sign in</button>
+            </Link>
           </div>
           {/* Sign Up Prompt */}
           <div className="last">
